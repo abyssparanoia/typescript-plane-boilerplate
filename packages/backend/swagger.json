@@ -1,0 +1,2535 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TOYOTA Catalog",
+    "description": "TOYOTA Catalog API description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "BodyType": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "name": { "type": "string", "description": "ボディタイプ名称", "example": "ワゴン" }
+        },
+        "required": ["createdAt", "updatedAt", "id", "name"]
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "totalCount": { "type": "number", "description": "ヒット件数", "example": 45 },
+          "offsetValue": { "type": "number", "description": "オフセット", "example": 15 },
+          "perPage": { "type": "number", "description": "1ページのデータ数", "example": 10 },
+          "totalPages": { "type": "number", "description": "ページ総数", "example": 7 },
+          "currentPage": { "type": "number", "description": "現在のページ", "example": 3 },
+          "nextPage": { "type": "number", "description": "次のページ", "example": 4 },
+          "prevPage": { "type": "number", "description": "前のページ", "example": 2 },
+          "isFirstPage": { "type": "boolean", "description": "最初のページ", "example": 1 },
+          "isLastPage": { "type": "boolean", "description": "最後のページ", "example": 1 }
+        },
+        "required": ["totalCount", "perPage", "currentPage"]
+      },
+      "AdminListBodyTypesResponse": {
+        "type": "object",
+        "properties": {
+          "bodyTypes": { "type": "array", "items": { "$ref": "#/components/schemas/BodyType" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["bodyTypes", "pagination"]
+      },
+      "AdminCreateBodyTypeRequestBody": {
+        "type": "object",
+        "properties": { "name": { "type": "string", "description": "ボディタイプ名称", "example": "ワゴン" } },
+        "required": ["name"]
+      },
+      "AdminCreateBodyTypeResponse": {
+        "type": "object",
+        "properties": { "bodyType": { "$ref": "#/components/schemas/BodyType" } },
+        "required": ["bodyType"]
+      },
+      "AdminGetBodyTypesResponse": {
+        "type": "object",
+        "properties": { "bodyType": { "$ref": "#/components/schemas/BodyType" } },
+        "required": ["bodyType"]
+      },
+      "AdminUpdateBodyTypeRequestBody": {
+        "type": "object",
+        "properties": { "name": { "type": "string", "description": "ボディタイプ名称", "example": "ワゴン" } }
+      },
+      "AdminUpdateBodyTypeResponse": {
+        "type": "object",
+        "properties": { "bodyType": { "$ref": "#/components/schemas/BodyType" } },
+        "required": ["bodyType"]
+      },
+      "Car": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "name": { "type": "string", "description": "車名", "example": "アルファード" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "assets/test/image.png" },
+          "bodyType": { "$ref": "#/components/schemas/BodyType" }
+        },
+        "required": ["createdAt", "updatedAt", "id", "name", "imagePath", "bodyType"]
+      },
+      "Staff": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "Firebase UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "displayName": { "type": "string", "description": "表示名", "example": "Toyota Taro" },
+          "iconImagePath": { "type": "string", "description": "アイコン画像のパス", "example": "icon_image_path.jpg" },
+          "email": { "type": "string", "description": "Eメールアドレス", "example": "taro@sample.com" },
+          "phoneNumber": { "type": "string", "description": "電話番号", "example": "090000000" },
+          "storeName": { "type": "string", "description": "販売店名", "example": "岡山トヨペット" },
+          "branchName": { "type": "string", "description": "店舗名", "example": "本店" },
+          "role": { "type": "string", "description": "ロール", "example": "ADMIN" }
+        },
+        "required": [
+          "createdAt",
+          "updatedAt",
+          "id",
+          "displayName",
+          "iconImagePath",
+          "email",
+          "phoneNumber",
+          "storeName",
+          "branchName",
+          "role"
+        ]
+      },
+      "Catalog": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "name": { "type": "string", "description": "カタログ名", "example": "20210125阿部様_アルファード資料" },
+          "fileStorageId": {
+            "type": "string",
+            "description": "File Storageに保存されてるPDF資料を一意に特定するID",
+            "example": "0BwwA4oUTeiV1UVNwOHItT0xfa2M"
+          },
+          "car": { "$ref": "#/components/schemas/Car" },
+          "createdBy": { "$ref": "#/components/schemas/Staff" },
+          "updatedBy": { "$ref": "#/components/schemas/Staff" }
+        },
+        "required": ["createdAt", "updatedAt", "id", "name", "fileStorageId", "car", "createdBy", "updatedBy"]
+      },
+      "AdminListCatalogsResponse": {
+        "type": "object",
+        "properties": {
+          "catalogs": { "type": "array", "items": { "$ref": "#/components/schemas/Catalog" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["catalogs", "pagination"]
+      },
+      "AdminCreateCatalogRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "カタログ名", "example": "20210125阿部様_アルファード資料" },
+          "fileStorageId": {
+            "type": "string",
+            "description": "File Strageに保存されてるPDF資料を一意に特定するID",
+            "example": "0BwwA4oUTeiV1UVNwOHItT0xfa2M"
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" }
+        },
+        "required": ["name", "fileStorageId", "carId"]
+      },
+      "AdminCreateCatalogResponse": {
+        "type": "object",
+        "properties": { "catalog": { "$ref": "#/components/schemas/Catalog" } },
+        "required": ["catalog"]
+      },
+      "AdminGetCatalogsResponse": {
+        "type": "object",
+        "properties": { "catalog": { "$ref": "#/components/schemas/Catalog" } },
+        "required": ["catalog"]
+      },
+      "AdminUpdateCatalogRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "カタログ名", "example": "20210125阿部様_アルファード資料" },
+          "fileStorageId": {
+            "type": "string",
+            "description": "File Strageに保存されてるPDF資料を一意に特定するID",
+            "example": "0BwwA4oUTeiV1UVNwOHItT0xfa2M"
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        }
+      },
+      "AdminUpdateCatalogResponse": {
+        "type": "object",
+        "properties": { "catalog": { "$ref": "#/components/schemas/Catalog" } },
+        "required": ["catalog"]
+      },
+      "AdminSaveCatalogRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "カタログ名", "example": "20210125阿部様_アルファード資料" },
+          "assetList": {
+            "description": "カタログに紐づくasset情報",
+            "example": [
+              { "id": "ac916d92-9e6f-4711-a6f1-1dad15f65e65", "order": 1 },
+              { "id": "dgao935t-9alk-5186-b6al-awejgawoy389", "order": 2 }
+            ],
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "aowetjaa-9awf-0163-awejg-gaweta151kg8" }
+        },
+        "required": ["name", "assetList", "carId"]
+      },
+      "AdminSaveCatalogResponse": {
+        "type": "object",
+        "properties": { "catalog": { "$ref": "#/components/schemas/Catalog" } },
+        "required": ["catalog"]
+      },
+      "AdminListCarsResponse": {
+        "type": "object",
+        "properties": {
+          "cars": { "type": "array", "items": { "$ref": "#/components/schemas/Car" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["cars", "pagination"]
+      },
+      "AdminCreateCarRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "車名", "example": "アルファード" },
+          "bodyTypeId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "assets/car1.png" }
+        },
+        "required": ["name", "bodyTypeId", "imagePath"]
+      },
+      "AdminCreateCarResponse": {
+        "type": "object",
+        "properties": { "car": { "$ref": "#/components/schemas/Car" } },
+        "required": ["car"]
+      },
+      "AdminGetCarsResponse": {
+        "type": "object",
+        "properties": { "car": { "$ref": "#/components/schemas/Car" } },
+        "required": ["car"]
+      },
+      "AdminUpdateCarRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "車名", "example": "アルファード" },
+          "bodyTypeId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "assets/car1.png" }
+        },
+        "required": ["imagePath"]
+      },
+      "AdminUpdateCarResponse": {
+        "type": "object",
+        "properties": { "car": { "$ref": "#/components/schemas/Car" } },
+        "required": ["car"]
+      },
+      "ListCarsResponse": {
+        "type": "object",
+        "properties": {
+          "cars": { "type": "array", "items": { "$ref": "#/components/schemas/Car" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["cars", "pagination"]
+      },
+      "Asset": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "pdfPath": {
+            "type": "string",
+            "description": "GCSに保存されてるpdfのパス",
+            "example": "/samples/sample.pdf"
+          },
+          "imagePath": {
+            "type": "string",
+            "description": "web上で表示するときに用いる画像のURL",
+            "example": "/sample/image.jpg"
+          },
+          "tag": { "type": "string", "description": "タグ", "example": "表紙" },
+          "car": { "$ref": "#/components/schemas/Car" }
+        },
+        "required": ["createdAt", "updatedAt", "id", "pdfPath", "imagePath", "tag", "car"]
+      },
+      "AdminListAssetsResponse": {
+        "type": "object",
+        "properties": {
+          "assets": { "type": "array", "items": { "$ref": "#/components/schemas/Asset" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["assets", "pagination"]
+      },
+      "AdminCreateAssetRequestBody": {
+        "type": "object",
+        "properties": {
+          "pdfPath": {
+            "type": "string",
+            "description": "GCSに保存されてるpdfのパス",
+            "example": "/samples/sample.pdf"
+          },
+          "imagePath": {
+            "type": "string",
+            "description": "web上で表示するときに用いる画像のパス",
+            "example": "/sample/image.jpg"
+          },
+          "tag": { "type": "string", "description": "タグ", "example": "表紙" },
+          "carId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        },
+        "required": ["pdfPath", "imagePath", "tag", "carId"]
+      },
+      "AdminCreateAssetResponse": {
+        "type": "object",
+        "properties": { "asset": { "$ref": "#/components/schemas/Asset" } },
+        "required": ["asset"]
+      },
+      "AdminGetAssetsResponse": {
+        "type": "object",
+        "properties": { "asset": { "$ref": "#/components/schemas/Asset" } },
+        "required": ["asset"]
+      },
+      "AdminUpdateAssetRequestBody": {
+        "type": "object",
+        "properties": {
+          "pdfPath": {
+            "type": "string",
+            "description": "GCSに保存されてるpdfのパス",
+            "example": "/samples/sample.pdf"
+          },
+          "tag": { "type": "string", "description": "タグ", "example": "表紙" },
+          "imagePath": {
+            "type": "string",
+            "description": "web上で表示するときに用いる画像のパス",
+            "example": "/sample/image.jpg"
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        }
+      },
+      "AdminUpdateAssetResponse": {
+        "type": "object",
+        "properties": { "asset": { "$ref": "#/components/schemas/Asset" } },
+        "required": ["asset"]
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "order": { "type": "number", "description": "ページ番号", "example": 1 },
+          "catalog": { "$ref": "#/components/schemas/Catalog" },
+          "asset": { "$ref": "#/components/schemas/Asset" }
+        },
+        "required": ["createdAt", "updatedAt", "id", "order", "catalog", "asset"]
+      },
+      "AdminListPagesResponse": {
+        "type": "object",
+        "properties": {
+          "pages": { "type": "array", "items": { "$ref": "#/components/schemas/Page" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["pages", "pagination"]
+      },
+      "AdminCreatePageRequestBody": {
+        "type": "object",
+        "properties": {
+          "order": { "type": "number", "description": "ページ番号", "example": 1 },
+          "catalogId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "assetId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" }
+        },
+        "required": ["order", "catalogId", "assetId"]
+      },
+      "AdminCreatePageResponse": {
+        "type": "object",
+        "properties": { "page": { "$ref": "#/components/schemas/Page" } },
+        "required": ["page"]
+      },
+      "AdminGetPagesResponse": {
+        "type": "object",
+        "properties": { "page": { "$ref": "#/components/schemas/Page" } },
+        "required": ["page"]
+      },
+      "AdminUpdatePageRequestBody": {
+        "type": "object",
+        "properties": {
+          "order": { "type": "number", "description": "ページ番号", "example": 1 },
+          "catalogId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "assetId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" }
+        }
+      },
+      "AdminUpdatePageResponse": {
+        "type": "object",
+        "properties": { "page": { "$ref": "#/components/schemas/Page" } },
+        "required": ["page"]
+      },
+      "CatalogTemplateTag": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "name": { "type": "string", "description": "カタログテンプレートタグ", "example": "グレード優先" },
+          "section": {
+            "type": "string",
+            "description": "カタログテンプレート区分。fixedかcustomizedが入る。fixedは標準カタログに付与するタグを表しており、customizedはユーザーが作成したテンプレートに付与するタグを表す。",
+            "example": "customized"
+          }
+        },
+        "required": ["createdAt", "updatedAt", "id", "name", "section"]
+      },
+      "TemplatePage": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "order": { "type": "number", "description": "ページ番号", "example": 1 },
+          "catalogTemplate": { "$ref": "#/components/schemas/CatalogTemplate" },
+          "asset": { "$ref": "#/components/schemas/Asset" }
+        },
+        "required": ["createdAt", "updatedAt", "id", "order", "catalogTemplate", "asset"]
+      },
+      "CatalogTemplate": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "name": {
+            "type": "string",
+            "description": "カタログテンプレート名",
+            "example": "グレード優先 アルファードテンプレート"
+          },
+          "car": { "$ref": "#/components/schemas/Car" },
+          "createdBy": { "$ref": "#/components/schemas/Staff" },
+          "updatedBy": { "$ref": "#/components/schemas/Staff" },
+          "catalogTemplateTag": { "$ref": "#/components/schemas/CatalogTemplateTag" },
+          "templatePages": { "type": "array", "items": { "$ref": "#/components/schemas/TemplatePage" } }
+        },
+        "required": [
+          "createdAt",
+          "updatedAt",
+          "id",
+          "name",
+          "car",
+          "createdBy",
+          "updatedBy",
+          "catalogTemplateTag",
+          "templatePages"
+        ]
+      },
+      "AdminListCatalogTemplatesResponse": {
+        "type": "object",
+        "properties": {
+          "catalogTemplates": { "type": "array", "items": { "$ref": "#/components/schemas/CatalogTemplate" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["catalogTemplates", "pagination"]
+      },
+      "AdminCreateCatalogTemplateRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "カタログテンプレート名",
+            "example": "グレード優先 アルファードテンプレート"
+          },
+          "catalogTemplateTagId": {
+            "type": "string",
+            "description": "UUID",
+            "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65"
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" }
+        },
+        "required": ["name", "catalogTemplateTagId", "carId"]
+      },
+      "AdminCreateCatalogTemplateResponse": {
+        "type": "object",
+        "properties": { "catalogTemplate": { "$ref": "#/components/schemas/CatalogTemplate" } },
+        "required": ["catalogTemplate"]
+      },
+      "AdminSaveCatalogTemplateRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "カタログテンプレート名",
+            "example": "20210125阿部様_アルファード資料"
+          },
+          "assetList": {
+            "description": "カタログテンプレートに紐ずくpageのアセット情報",
+            "example": [
+              { "id": "ac916d92-9e6f-4711-a6f1-1dad15f65e65", "order": 1 },
+              { "id": "dgao935t-9alk-5186-b6al-awejgawoy389", "order": 2 }
+            ],
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "aowetjaa-9awf-0163-awejg-gaweta151kg8" },
+          "catalogTemplateTagId": {
+            "type": "string",
+            "description": "UUID",
+            "example": "aowetjaa-9awf-0163-awejg-gaweta151kg8"
+          }
+        },
+        "required": ["name", "assetList", "carId", "catalogTemplateTagId"]
+      },
+      "AdminSaveCatalogTemplateResponse": {
+        "type": "object",
+        "properties": { "catalogTemplate": { "$ref": "#/components/schemas/CatalogTemplate" } },
+        "required": ["catalogTemplate"]
+      },
+      "AdminGetCatalogTemplatesResponse": {
+        "type": "object",
+        "properties": { "catalogTemplate": { "$ref": "#/components/schemas/CatalogTemplate" } },
+        "required": ["catalogTemplate"]
+      },
+      "AdminUpdateCatalogTemplateRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "カタログテンプレート名",
+            "example": "グレード優先 アルファードテンプレート"
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "catalogTemplateTagId": {
+            "type": "string",
+            "description": "UUID",
+            "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65"
+          }
+        }
+      },
+      "AdminUpdateCatalogTemplateResponse": {
+        "type": "object",
+        "properties": { "catalogTemplate": { "$ref": "#/components/schemas/CatalogTemplate" } },
+        "required": ["catalogTemplate"]
+      },
+      "AdminListTemplatePagesResponse": {
+        "type": "object",
+        "properties": {
+          "templatePages": { "type": "array", "items": { "$ref": "#/components/schemas/TemplatePage" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["templatePages", "pagination"]
+      },
+      "AdminCreateTemplatePageRequestBody": {
+        "type": "object",
+        "properties": {
+          "order": { "type": "number", "description": "ページ番号", "example": 1 },
+          "catalogTemplateId": {
+            "type": "string",
+            "description": "UUID",
+            "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65"
+          },
+          "assetId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" }
+        },
+        "required": ["order", "catalogTemplateId", "assetId"]
+      },
+      "AdminCreateTemplatePageResponse": {
+        "type": "object",
+        "properties": { "templatePage": { "$ref": "#/components/schemas/TemplatePage" } },
+        "required": ["templatePage"]
+      },
+      "AdminGetTemplatePagesResponse": {
+        "type": "object",
+        "properties": { "templatePage": { "$ref": "#/components/schemas/TemplatePage" } },
+        "required": ["templatePage"]
+      },
+      "AdminUpdateTemplatePageRequestBody": {
+        "type": "object",
+        "properties": {
+          "order": { "type": "number", "description": "ページ番号", "example": 1 },
+          "catalogTemplateId": {
+            "type": "string",
+            "description": "UUID",
+            "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65"
+          },
+          "assetId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" }
+        }
+      },
+      "AdminUpdateTemplatePageResponse": {
+        "type": "object",
+        "properties": { "templatePage": { "$ref": "#/components/schemas/TemplatePage" } },
+        "required": ["templatePage"]
+      },
+      "AdminListCatalogTemplateTagsResponse": {
+        "type": "object",
+        "properties": {
+          "catalogTemplateTags": { "type": "array", "items": { "$ref": "#/components/schemas/CatalogTemplateTag" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["catalogTemplateTags", "pagination"]
+      },
+      "AdminCreateCatalogTemplateTagRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "カタログテンプレートタグ", "example": "グレード優先" },
+          "section": {
+            "type": "string",
+            "description": "カタログテンプレート区分。fixedかcustomizedが入る。fixedは標準カタログに付与するタグを表しており、customizedはユーザーが作成したテンプレートに付与するタグを表す。",
+            "example": "customized"
+          }
+        },
+        "required": ["name", "section"]
+      },
+      "AdminCreateCatalogTemplateTagResponse": {
+        "type": "object",
+        "properties": { "catalogTemplateTag": { "$ref": "#/components/schemas/CatalogTemplateTag" } },
+        "required": ["catalogTemplateTag"]
+      },
+      "AdminGetCatalogTemplateTagsResponse": {
+        "type": "object",
+        "properties": { "catalogTemplateTag": { "$ref": "#/components/schemas/CatalogTemplateTag" } },
+        "required": ["catalogTemplateTag"]
+      },
+      "AdminUpdateCatalogTemplateTagRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "カタログテンプレートタグ", "example": "グレード優先" }
+        }
+      },
+      "AdminUpdateCatalogTemplateTagResponse": {
+        "type": "object",
+        "properties": { "catalogTemplateTag": { "$ref": "#/components/schemas/CatalogTemplateTag" } },
+        "required": ["catalogTemplateTag"]
+      },
+      "AdminCreateStaffRequestBody": {
+        "type": "object",
+        "properties": {
+          "displayName": { "type": "string", "description": "表示名", "example": "Toyota Taro" },
+          "iconImagePath": { "type": "string", "description": "アイコン画像のパス", "example": "icon_image_path.jpg" },
+          "email": { "type": "string", "description": "Eメールアドレス", "example": "taro@sample.com" },
+          "profile": { "type": "string", "description": "プロファイル", "example": "" },
+          "phoneNumber": { "type": "string", "description": "電話番号", "example": "090000000" },
+          "storeName": { "type": "string", "description": "販売店名", "example": "岡山トヨペット" },
+          "branchName": { "type": "string", "description": "店舗名", "example": "本店" },
+          "role": { "type": "string", "description": "ロール", "example": "ADMIN" }
+        },
+        "required": [
+          "displayName",
+          "iconImagePath",
+          "email",
+          "profile",
+          "phoneNumber",
+          "storeName",
+          "branchName",
+          "role"
+        ]
+      },
+      "AdminStaffAuthorizeResponse": {
+        "type": "object",
+        "properties": { "staff": { "$ref": "#/components/schemas/Staff" } },
+        "required": ["staff"]
+      },
+      "AdminUpdateStaffRequestBody": {
+        "type": "object",
+        "properties": {
+          "displayName": { "type": "string", "description": "表示名", "example": "Toyota Taro" },
+          "iconImagePath": { "type": "string", "description": "アイコン画像のパス", "example": "icon_image_path.jpg" },
+          "email": { "type": "string", "description": "Eメールアドレス", "example": "taro@sample.com" },
+          "profile": { "type": "string", "description": "プロファイル", "example": "" },
+          "phoneNumber": { "type": "string", "description": "電話番号", "example": "090000000" },
+          "storeName": { "type": "string", "description": "販売店名", "example": "岡山トヨペット" },
+          "branchName": { "type": "string", "description": "店舗名", "example": "本店" },
+          "role": { "type": "string", "description": "ロール", "example": "ADMIN" }
+        },
+        "required": ["phoneNumber", "storeName", "branchName"]
+      },
+      "Color": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "name": { "type": "string", "description": "カラー英名", "example": "black-pearl" },
+          "displayName": { "type": "string", "description": "カラー表示名", "example": "プレシャスブラックパール" },
+          "colorCode": { "type": "string", "description": "カラーコード", "example": "#5d6062" },
+          "discription": {
+            "type": "string",
+            "description": "詳細",
+            "example": "メーカーオプション＜55,000円（消費税抜き50,000円）＞となります。"
+          },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.jpg" },
+          "grade": { "$ref": "#/components/schemas/Grade" }
+        },
+        "required": [
+          "createdAt",
+          "updatedAt",
+          "id",
+          "name",
+          "displayName",
+          "colorCode",
+          "discription",
+          "imagePath",
+          "grade"
+        ]
+      },
+      "FeatureTag": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "name": { "type": "string", "description": "グレード特徴英名", "example": "safety_performance" },
+          "displayName": { "type": "string", "description": "グレード特徴表示名", "example": "安全性能" }
+        },
+        "required": ["createdAt", "updatedAt", "id", "name", "displayName"]
+      },
+      "FeatureDetail": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "title": { "type": "string", "description": "タイトル", "example": "ブラック" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.jpg" },
+          "discription": {
+            "type": "string",
+            "description": "詳細説明",
+            "example": "シート表皮：ファブリック／シートステッチ：ダークグレー　■写真はS（ガソリン・2WD）。"
+          },
+          "order": { "type": "number", "description": "表示順。0-indexではなく1-index", "example": 1 },
+          "feature": { "$ref": "#/components/schemas/Feature" }
+        },
+        "required": ["createdAt", "updatedAt", "id", "title", "imagePath", "discription", "order", "feature"]
+      },
+      "Feature": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "featureTag": { "$ref": "#/components/schemas/FeatureTag" },
+          "grade": { "$ref": "#/components/schemas/Grade" },
+          "featureDetails": { "type": "array", "items": { "$ref": "#/components/schemas/FeatureDetail" } }
+        },
+        "required": ["createdAt", "updatedAt", "id", "featureTag", "grade", "featureDetails"]
+      },
+      "Grade": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "データ作成日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "データ更新日時を表すUnixTime（秒）",
+            "example": "1610377347"
+          },
+          "id": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" },
+          "name": { "type": "string", "description": "データの英名", "example": "s-gasoline-2wd" },
+          "displayName": { "type": "string", "description": "データの和名", "example": "S ガソリン・2WD" },
+          "price": { "type": "number", "description": "税込価格", "example": "2990000" },
+          "fuelEfficiencyWltc": { "type": "number", "description": "WLTCモードの燃費", "example": "15400" },
+          "fuelEfficiencyJc08": { "type": "number", "description": "JC08モードの燃費", "example": "27400" },
+          "engineDisplacement": { "type": "string", "description": "エンジン変位", "example": "2.0L+モーター" },
+          "wheelDrive": { "type": "string", "description": "ホイールドライブ", "example": "4WD（E-Four）" },
+          "wheelbase": { "type": "number", "description": "ホイールベース", "example": "2690" },
+          "frontTread": { "type": "number", "description": "フロントトレッド", "example": "1605" },
+          "rearTread": { "type": "number", "description": "リアトレッド", "example": "1625" },
+          "minimumTurningRadius": { "type": "number", "description": "取り回し（最小回転半径）", "example": "5.7" },
+          "ridingCapacity": { "type": "number", "description": "乗員定員", "example": "5" },
+          "engineType": { "type": "string", "description": "エンジンタイプ", "example": "G" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.png" },
+          "overallLength": { "type": "number", "description": "全長", "example": 4740 },
+          "overallWidth": { "type": "number", "description": "全幅", "example": 1855 },
+          "overallHeight": { "type": "number", "description": "全高", "example": 1660 },
+          "overallLengthImagePath": {
+            "type": "string",
+            "description": "全長用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "overallWidthImagePath": {
+            "type": "string",
+            "description": "全幅用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "overallHeightImagePath": {
+            "type": "string",
+            "description": "全高用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "car": { "$ref": "#/components/schemas/Car" },
+          "colors": { "$ref": "#/components/schemas/Color" },
+          "features": { "$ref": "#/components/schemas/Feature" }
+        },
+        "required": [
+          "createdAt",
+          "updatedAt",
+          "id",
+          "name",
+          "displayName",
+          "price",
+          "fuelEfficiencyWltc",
+          "fuelEfficiencyJc08",
+          "engineDisplacement",
+          "wheelDrive",
+          "wheelbase",
+          "frontTread",
+          "rearTread",
+          "minimumTurningRadius",
+          "ridingCapacity",
+          "engineType",
+          "imagePath",
+          "overallLength",
+          "overallWidth",
+          "overallHeight",
+          "overallLengthImagePath",
+          "overallWidthImagePath",
+          "overallHeightImagePath",
+          "car",
+          "colors",
+          "features"
+        ]
+      },
+      "AdminListGradesResponse": {
+        "type": "object",
+        "properties": {
+          "grades": { "type": "array", "items": { "$ref": "#/components/schemas/Grade" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["grades", "pagination"]
+      },
+      "AdminCreateGradeRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "データの英名", "example": "s-gasoline-2wd" },
+          "displayName": { "type": "string", "description": "データの和名", "example": "S ガソリン・2WD" },
+          "price": { "type": "number", "description": "税込価格", "example": "2990000" },
+          "fuelEfficiencyWltc": { "type": "number", "description": "WLTCモードの燃費", "example": "15400" },
+          "fuelEfficiencyJc08": { "type": "number", "description": "JC08モードの燃費", "example": "27400" },
+          "engineDisplacement": { "type": "string", "description": "エンジン変位", "example": "2.0L+モーター" },
+          "wheelDrive": { "type": "string", "description": "ホイールドライブ", "example": "4WD（E-Four）" },
+          "wheelbase": { "type": "number", "description": "ホイールベース", "example": "2690" },
+          "frontTread": { "type": "number", "description": "フロントトレッド", "example": "1605" },
+          "rearTread": { "type": "number", "description": "リアトレッド", "example": "1625" },
+          "minimumTurningRadius": { "type": "number", "description": "取り回し（最小回転半径）", "example": "5.7" },
+          "ridingCapacity": { "type": "number", "description": "乗員定員", "example": "5" },
+          "engineType": { "type": "string", "description": "エンジンタイプ", "example": "G" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.png" },
+          "overallLength": { "type": "number", "description": "全長", "example": 4740 },
+          "overallWidth": { "type": "number", "description": "全幅", "example": 1855 },
+          "overallHeight": { "type": "number", "description": "全高", "example": 1660 },
+          "overallLengthImagePath": {
+            "type": "string",
+            "description": "全長用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "overallWidthImagePath": {
+            "type": "string",
+            "description": "全幅用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "overallHeightImagePath": {
+            "type": "string",
+            "description": "全高用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        },
+        "required": [
+          "name",
+          "displayName",
+          "price",
+          "fuelEfficiencyWltc",
+          "fuelEfficiencyJc08",
+          "engineDisplacement",
+          "wheelDrive",
+          "wheelbase",
+          "frontTread",
+          "rearTread",
+          "minimumTurningRadius",
+          "ridingCapacity",
+          "engineType",
+          "imagePath",
+          "overallLength",
+          "overallWidth",
+          "overallHeight",
+          "overallLengthImagePath",
+          "overallWidthImagePath",
+          "overallHeightImagePath",
+          "carId"
+        ]
+      },
+      "AdminCreateGradeResponse": {
+        "type": "object",
+        "properties": { "grade": { "$ref": "#/components/schemas/Grade" } },
+        "required": ["grade"]
+      },
+      "AdminGetGradesResponse": {
+        "type": "object",
+        "properties": { "grade": { "$ref": "#/components/schemas/Grade" } },
+        "required": ["grade"]
+      },
+      "AdminUpdateGradeRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "データの英名", "example": "s-gasoline-2wd" },
+          "displayName": { "type": "string", "description": "データの和名", "example": "S ガソリン・2WD" },
+          "price": { "type": "number", "description": "税込価格", "example": "2990000" },
+          "fuelEfficiencyWltc": { "type": "number", "description": "WLTCモードの燃費", "example": "15400" },
+          "fuelEfficiencyJc08": { "type": "number", "description": "JC08モードの燃費", "example": "27400" },
+          "engineDisplacement": { "type": "string", "description": "エンジン変位", "example": "2.0L+モーター" },
+          "wheelDrive": { "type": "string", "description": "ホイールドライブ", "example": "4WD（E-Four）" },
+          "wheelbase": { "type": "number", "description": "ホイールベース", "example": "2690" },
+          "frontTread": { "type": "number", "description": "フロントトレッド", "example": "1605" },
+          "rearTread": { "type": "number", "description": "リアトレッド", "example": "1625" },
+          "minimumTurningRadius": { "type": "number", "description": "取り回し（最小回転半径）", "example": "5.7" },
+          "ridingCapacity": { "type": "number", "description": "乗員定員", "example": "5" },
+          "engineType": { "type": "string", "description": "エンジンタイプ", "example": "G" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.png" },
+          "overallLength": { "type": "number", "description": "全長", "example": 4740 },
+          "overallWidth": { "type": "number", "description": "全幅", "example": 1855 },
+          "overallHeight": { "type": "number", "description": "全高", "example": 1660 },
+          "overallLengthImagePath": {
+            "type": "string",
+            "description": "全長用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "overallWidthImagePath": {
+            "type": "string",
+            "description": "全幅用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "overallHeightImagePath": {
+            "type": "string",
+            "description": "全高用画像パス",
+            "example": "/sample/sample.png"
+          },
+          "carId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        },
+        "required": [
+          "name",
+          "displayName",
+          "price",
+          "fuelEfficiencyWltc",
+          "fuelEfficiencyJc08",
+          "engineDisplacement",
+          "wheelDrive",
+          "wheelbase",
+          "frontTread",
+          "rearTread",
+          "minimumTurningRadius",
+          "ridingCapacity",
+          "engineType",
+          "imagePath",
+          "overallLength",
+          "overallWidth",
+          "overallHeight",
+          "overallLengthImagePath",
+          "overallWidthImagePath",
+          "overallHeightImagePath"
+        ]
+      },
+      "AdminUpdateGradeResponse": {
+        "type": "object",
+        "properties": { "grade": { "$ref": "#/components/schemas/Grade" } },
+        "required": ["grade"]
+      },
+      "AdminListColorsResponse": {
+        "type": "object",
+        "properties": {
+          "colors": { "type": "array", "items": { "$ref": "#/components/schemas/Color" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["colors", "pagination"]
+      },
+      "AdminCreateColorRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "カラー英名", "example": "black-pearl" },
+          "displayName": { "type": "string", "description": "カラー表示名", "example": "プレシャスブラックパール" },
+          "colorCode": { "type": "string", "description": "カラーコード", "example": "#5d6062" },
+          "discription": {
+            "type": "string",
+            "description": "詳細",
+            "example": "メーカーオプション＜55,000円（消費税抜き50,000円）＞となります。"
+          },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.jpg" },
+          "gradeId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        },
+        "required": ["name", "displayName", "colorCode", "discription", "imagePath", "gradeId"]
+      },
+      "AdminCreateColorResponse": {
+        "type": "object",
+        "properties": { "color": { "$ref": "#/components/schemas/Color" } },
+        "required": ["color"]
+      },
+      "AdminGetColorsResponse": {
+        "type": "object",
+        "properties": { "color": { "$ref": "#/components/schemas/Color" } },
+        "required": ["color"]
+      },
+      "AdminUpdateColorRequestBody": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "カラー英名", "example": "black-pearl" },
+          "displayName": { "type": "string", "description": "カラー表示名", "example": "プレシャスブラックパール" },
+          "colorCode": { "type": "string", "description": "カラーコード", "example": "#5d6062" },
+          "discription": {
+            "type": "string",
+            "description": "詳細",
+            "example": "メーカーオプション＜55,000円（消費税抜き50,000円）＞となります。"
+          },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.jpg" },
+          "gradeId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        },
+        "required": ["name", "displayName", "colorCode", "discription", "imagePath", "gradeId"]
+      },
+      "AdminUpdateColorResponse": {
+        "type": "object",
+        "properties": { "color": { "$ref": "#/components/schemas/Color" } },
+        "required": ["color"]
+      },
+      "AdminListFeaturesResponse": {
+        "type": "object",
+        "properties": {
+          "features": { "type": "array", "items": { "$ref": "#/components/schemas/Feature" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["features", "pagination"]
+      },
+      "AdminCreateFeatureRequestBody": {
+        "type": "object",
+        "properties": {
+          "featureTagId": {
+            "type": "string",
+            "description": "UUID",
+            "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb"
+          },
+          "gradeId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        },
+        "required": ["featureTagId", "gradeId"]
+      },
+      "AdminCreateFeatureResponse": {
+        "type": "object",
+        "properties": { "feature": { "$ref": "#/components/schemas/Feature" } },
+        "required": ["feature"]
+      },
+      "AdminGetFeaturesResponse": {
+        "type": "object",
+        "properties": { "feature": { "$ref": "#/components/schemas/Feature" } },
+        "required": ["feature"]
+      },
+      "AdminUpdateFeatureRequestBody": {
+        "type": "object",
+        "properties": {
+          "featureTagId": {
+            "type": "string",
+            "description": "UUID",
+            "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb"
+          },
+          "gradeId": { "type": "string", "description": "UUID", "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb" }
+        },
+        "required": ["featureTagId", "gradeId"]
+      },
+      "AdminUpdateFeatureResponse": {
+        "type": "object",
+        "properties": { "feature": { "$ref": "#/components/schemas/Feature" } },
+        "required": ["feature"]
+      },
+      "AdminListFeatureDetailsResponse": {
+        "type": "object",
+        "properties": {
+          "featureDetails": { "type": "array", "items": { "$ref": "#/components/schemas/FeatureDetail" } },
+          "pagination": { "$ref": "#/components/schemas/Pagination" }
+        },
+        "required": ["featureDetails", "pagination"]
+      },
+      "AdminCreateFeatureDetailRequestBody": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "description": "タイトル", "example": "ブラック" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.jpg" },
+          "discription": {
+            "type": "string",
+            "description": "詳細説明",
+            "example": "シート表皮：ファブリック／シートステッチ：ダークグレー　■写真はS（ガソリン・2WD）。"
+          },
+          "order": { "type": "number", "description": "表示順。0-indexではなく1-index", "example": 1 },
+          "featureId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" }
+        },
+        "required": ["title", "imagePath", "discription", "order", "featureId"]
+      },
+      "AdminCreateFeatureDetailResponse": {
+        "type": "object",
+        "properties": { "featureDetail": { "$ref": "#/components/schemas/FeatureDetail" } },
+        "required": ["featureDetail"]
+      },
+      "AdminGetFeatureDetailsResponse": {
+        "type": "object",
+        "properties": { "featureDetail": { "$ref": "#/components/schemas/FeatureDetail" } },
+        "required": ["featureDetail"]
+      },
+      "AdminUpdateFeatureDetailRequestBody": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "description": "タイトル", "example": "ブラック" },
+          "imagePath": { "type": "string", "description": "画像パス", "example": "/sample/sample.jpg" },
+          "discription": {
+            "type": "string",
+            "description": "詳細説明",
+            "example": "シート表皮：ファブリック／シートステッチ：ダークグレー　■写真はS（ガソリン・2WD）。"
+          },
+          "order": { "type": "number", "description": "表示順。0-indexではなく1-index", "example": 1 },
+          "featureId": { "type": "string", "description": "UUID", "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65" }
+        },
+        "required": ["title", "imagePath", "discription", "order", "featureId"]
+      },
+      "AdminUpdateFeatureDetailResponse": {
+        "type": "object",
+        "properties": { "featureDetail": { "$ref": "#/components/schemas/FeatureDetail" } },
+        "required": ["featureDetail"]
+      }
+    }
+  },
+  "paths": {
+    "/admin/body_types": {
+      "get": {
+        "operationId": "AdminBodyTypeController_list",
+        "summary": "ボディタイプ一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminListBodyTypesResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminBodyTypeService"]
+      },
+      "post": {
+        "operationId": "AdminBodyTypeController_create",
+        "summary": "ボディタイプを新規取得",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateBodyTypeRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateBodyTypeResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminBodyTypeService"]
+      }
+    },
+    "/admin/body_types/{bodyTypeId}": {
+      "get": {
+        "operationId": "AdminBodyTypeController_get",
+        "summary": "ボディタイプの詳細情報を取得",
+        "parameters": [{ "name": "bodyTypeId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetBodyTypesResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminBodyTypeService"]
+      },
+      "patch": {
+        "operationId": "AdminBodyTypeController_update",
+        "summary": "ボディタイプの詳細情報を変更",
+        "parameters": [{ "name": "bodyTypeId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateBodyTypeRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateBodyTypeResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminBodyTypeService"]
+      },
+      "delete": {
+        "operationId": "AdminBodyTypeController_deactivate",
+        "summary": "ボディタイプを削除",
+        "parameters": [{ "name": "bodyTypeId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminBodyTypeService"]
+      }
+    },
+    "/body_types": {
+      "get": {
+        "operationId": "BodyTypeController_list",
+        "summary": "ボディタイプ一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminListBodyTypesResponse" } }
+            }
+          }
+        },
+        "tags": ["BodyTypeService"]
+      }
+    },
+    "/admin/catalogs": {
+      "get": {
+        "operationId": "AdminCatalogController_list",
+        "summary": "カタログ一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "name",
+            "required": true,
+            "in": "query",
+            "description": "カタログ名",
+            "example": "20210125阿部様_アルファード資料",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminListCatalogsResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogService"]
+      },
+      "post": {
+        "operationId": "AdminCatalogController_create",
+        "summary": "カタログを新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateCatalogRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateCatalogResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogService"]
+      }
+    },
+    "/admin/catalogs/{catalogId}": {
+      "get": {
+        "operationId": "AdminCatalogController_get",
+        "summary": "カタログの詳細情報を取得",
+        "parameters": [{ "name": "catalogId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetCatalogsResponse" } } }
+          }
+        },
+        "tags": ["AdminCatalogService"]
+      },
+      "patch": {
+        "operationId": "AdminCatalogController_update",
+        "summary": "カタログの詳細情報を変更",
+        "parameters": [{ "name": "catalogId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateCatalogRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateCatalogResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogService"]
+      },
+      "delete": {
+        "operationId": "AdminCatalogController_deactivate",
+        "summary": "カタログを削除",
+        "parameters": [{ "name": "catalogId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminCatalogService"]
+      }
+    },
+    "/admin/catalogs/save": {
+      "post": {
+        "operationId": "AdminCatalogController_save",
+        "summary": "カタログの新規作成、PDFの合成、File Strageへのアップロードを一度に実行する",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminSaveCatalogRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminSaveCatalogResponse" } } }
+          }
+        },
+        "tags": ["AdminCatalogService"]
+      }
+    },
+    "/admin/catalogs/{catalogId}/pdf": {
+      "post": {
+        "operationId": "AdminCatalogController_mergePDF",
+        "summary": "PDFを合成",
+        "parameters": [{ "name": "catalogId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "201": { "description": "" } },
+        "tags": ["AdminCatalogService"]
+      }
+    },
+    "/admin/cars": {
+      "get": {
+        "operationId": "AdminCarController_listAdmin",
+        "summary": "車名一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminListCarsResponse" } } }
+          }
+        },
+        "tags": ["AdminCarService"]
+      },
+      "post": {
+        "operationId": "AdminCarController_create",
+        "summary": "車名を新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateCarRequestBody" } } }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateCarResponse" } } }
+          }
+        },
+        "tags": ["AdminCarService"]
+      }
+    },
+    "/admin/cars/{carId}": {
+      "get": {
+        "operationId": "AdminCarController_get",
+        "summary": "車名の詳細情報を取得",
+        "parameters": [{ "name": "carId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetCarsResponse" } } }
+          }
+        },
+        "tags": ["AdminCarService"]
+      },
+      "patch": {
+        "operationId": "AdminCarController_update",
+        "summary": "車名の詳細情報を変更",
+        "parameters": [{ "name": "carId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateCarRequestBody" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateCarResponse" } } }
+          }
+        },
+        "tags": ["AdminCarService"]
+      },
+      "delete": {
+        "operationId": "AdminCarController_deactivate",
+        "summary": "車名を削除",
+        "parameters": [{ "name": "carId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminCarService"]
+      }
+    },
+    "/cars": {
+      "get": {
+        "operationId": "CarController_list",
+        "summary": "車名一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ListCarsResponse" } } }
+          }
+        },
+        "tags": ["CarService"]
+      }
+    },
+    "/admin/assets": {
+      "get": {
+        "operationId": "AdminAssetController_list",
+        "summary": "アセット一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "carId",
+            "required": true,
+            "in": "query",
+            "description": "car id",
+            "example": "01bc2847-1767-48c0-8f5f-8cc8f28436bb",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminListAssetsResponse" } } }
+          }
+        },
+        "tags": ["AdminAssetService"]
+      },
+      "post": {
+        "operationId": "AdminAssetController_create",
+        "summary": "アセットを新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateAssetRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateAssetResponse" } } }
+          }
+        },
+        "tags": ["AdminAssetService"]
+      }
+    },
+    "/admin/assets/{assetId}": {
+      "get": {
+        "operationId": "AdminAssetController_get",
+        "summary": "アセットの詳細情報を取得",
+        "parameters": [{ "name": "assetId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetAssetsResponse" } } }
+          }
+        },
+        "tags": ["AdminAssetService"]
+      },
+      "patch": {
+        "operationId": "AdminAssetController_update",
+        "summary": "アセットの詳細情報を変更",
+        "parameters": [{ "name": "assetId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateAssetRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateAssetResponse" } } }
+          }
+        },
+        "tags": ["AdminAssetService"]
+      },
+      "delete": {
+        "operationId": "AdminAssetController_deactivate",
+        "summary": "アセットを削除",
+        "parameters": [{ "name": "assetId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminAssetService"]
+      }
+    },
+    "/admin/pages": {
+      "get": {
+        "operationId": "AdminPageController_list",
+        "summary": "ページ一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminListPagesResponse" } } }
+          }
+        },
+        "tags": ["AdminPageService"]
+      },
+      "post": {
+        "operationId": "AdminPageController_create",
+        "summary": "ページを新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreatePageRequestBody" } } }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreatePageResponse" } } }
+          }
+        },
+        "tags": ["AdminPageService"]
+      }
+    },
+    "/admin/pages/{pageId}": {
+      "get": {
+        "operationId": "AdminPageController_get",
+        "summary": "ページの詳細情報を取得",
+        "parameters": [{ "name": "pageId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetPagesResponse" } } }
+          }
+        },
+        "tags": ["AdminPageService"]
+      },
+      "patch": {
+        "operationId": "AdminPageController_update",
+        "summary": "ページの詳細情報を変更",
+        "parameters": [{ "name": "pageId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdatePageRequestBody" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdatePageResponse" } } }
+          }
+        },
+        "tags": ["AdminPageService"]
+      },
+      "delete": {
+        "operationId": "AdminPageController_deactivate",
+        "summary": "ページを削除",
+        "parameters": [{ "name": "pageId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminPageService"]
+      }
+    },
+    "/admin/catalog_templates": {
+      "get": {
+        "operationId": "AdminCatalogTemplateController_list",
+        "summary": "カタログテンプレート一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "name",
+            "required": true,
+            "in": "query",
+            "description": "テンプレート名",
+            "example": "テンプレート１",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "catalogTemplateTagId",
+            "required": true,
+            "in": "query",
+            "description": "カタログテンプレートID",
+            "example": "ac916d92-9e6f-4711-a6f1-1dad15f65e65",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminListCatalogTemplatesResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateService"]
+      },
+      "post": {
+        "operationId": "AdminCatalogTemplateController_create",
+        "summary": "カタログテンプレートを新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateCatalogTemplateRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateCatalogTemplateResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateService"]
+      }
+    },
+    "/admin/catalog_templates/save": {
+      "post": {
+        "operationId": "AdminCatalogTemplateController_save",
+        "summary": "カタログテンプレートの新規作成、ページの作成を同時に行う",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminSaveCatalogTemplateRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminSaveCatalogTemplateResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateService"]
+      }
+    },
+    "/admin/catalog_templates/{catalogTemplateId}": {
+      "get": {
+        "operationId": "AdminCatalogTemplateController_get",
+        "summary": "カタログテンプレートの詳細情報を取得",
+        "parameters": [{ "name": "catalogTemplateId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetCatalogTemplatesResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateService"]
+      },
+      "patch": {
+        "operationId": "AdminCatalogTemplateController_update",
+        "summary": "カタログテンプレートの詳細情報を変更",
+        "parameters": [{ "name": "catalogTemplateId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateCatalogTemplateRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateCatalogTemplateResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateService"]
+      },
+      "delete": {
+        "operationId": "AdminCatalogTemplateController_deactivate",
+        "summary": "カタログテンプレートを削除",
+        "parameters": [{ "name": "catalogTemplateId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminCatalogTemplateService"]
+      }
+    },
+    "/admin/template_pages": {
+      "get": {
+        "operationId": "AdminTemplatePageController_list",
+        "summary": "テンプレートページ一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminListTemplatePagesResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminTemplatePageService"]
+      },
+      "post": {
+        "operationId": "AdminTemplatePageController_create",
+        "summary": "テンプレートページを新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateTemplatePageRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateTemplatePageResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminTemplatePageService"]
+      }
+    },
+    "/admin/template_pages/{templatePageId}": {
+      "get": {
+        "operationId": "AdminTemplatePageController_get",
+        "summary": "テンプレートページの詳細情報を取得",
+        "parameters": [{ "name": "templatePageId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetTemplatePagesResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminTemplatePageService"]
+      },
+      "patch": {
+        "operationId": "AdminTemplatePageController_update",
+        "summary": "テンプレートページの詳細情報を変更",
+        "parameters": [{ "name": "templatePageId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateTemplatePageRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateTemplatePageResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminTemplatePageService"]
+      },
+      "delete": {
+        "operationId": "AdminTemplatePageController_deactivate",
+        "summary": "テンプレートページを削除",
+        "parameters": [{ "name": "templatePageId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminTemplatePageService"]
+      }
+    },
+    "/admin/catalog_template_tags": {
+      "get": {
+        "operationId": "AdminCatalogTemplateTagController_list",
+        "summary": "カタログテンプレートタグ一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminListCatalogTemplateTagsResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateTagService"]
+      },
+      "post": {
+        "operationId": "AdminCatalogTemplateTagController_create",
+        "summary": "カタログテンプレートタグを新規取得",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AdminCreateCatalogTemplateTagRequestBody" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateCatalogTemplateTagResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateTagService"]
+      }
+    },
+    "/admin/catalog_template_tags/{catalogTemplateTagId}": {
+      "get": {
+        "operationId": "AdminCatalogTemplateTagController_get",
+        "summary": "カタログテンプレートタグの詳細情報を取得",
+        "parameters": [
+          { "name": "catalogTemplateTagId", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetCatalogTemplateTagsResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateTagService"]
+      },
+      "patch": {
+        "operationId": "AdminCatalogTemplateTagController_update",
+        "summary": "カタログテンプレートタグの詳細情報を変更",
+        "parameters": [
+          { "name": "catalogTemplateTagId", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AdminUpdateCatalogTemplateTagRequestBody" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateCatalogTemplateTagResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminCatalogTemplateTagService"]
+      },
+      "delete": {
+        "operationId": "AdminCatalogTemplateTagController_deactivate",
+        "summary": "カタログテンプレートタグを削除",
+        "parameters": [
+          { "name": "catalogTemplateTagId", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminCatalogTemplateTagService"]
+      }
+    },
+    "/admin/staffs/{staffId}": {
+      "get": {
+        "operationId": "AdminStaffController_get",
+        "summary": "スタッフの詳細情報を取得",
+        "parameters": [{ "name": "staffId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "" } },
+        "tags": ["AdminStaffService"]
+      },
+      "patch": {
+        "operationId": "AdminStaffController_update",
+        "summary": "スタッフの詳細情報を変更",
+        "parameters": [{ "name": "staffId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateStaffRequestBody" } }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "tags": ["AdminStaffService"]
+      },
+      "delete": {
+        "operationId": "AdminStaffController_deactivate",
+        "summary": "スタッフを削除",
+        "parameters": [{ "name": "staffId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "" } },
+        "tags": ["AdminStaffService"]
+      }
+    },
+    "/admin/staffs": {
+      "get": {
+        "operationId": "AdminStaffController_list",
+        "summary": "スタッフの一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          },
+          {
+            "name": "displayName",
+            "required": true,
+            "in": "query",
+            "description": "スタッフ名",
+            "example": "杉本ゆうすけ",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["AdminStaffService"]
+      },
+      "post": {
+        "operationId": "AdminStaffController_create",
+        "summary": "スタッフを新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateStaffRequestBody" } }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["AdminStaffService"]
+      }
+    },
+    "/admin/staffs/authorize": {
+      "post": {
+        "operationId": "AdminStaffController_authorize",
+        "summary": "スタッフの認証処理を実行",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminStaffAuthorizeResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminStaffService"]
+      }
+    },
+    "/admin/staffs/{staffId}/activate": {
+      "put": {
+        "operationId": "AdminStaffController_activate",
+        "summary": "スタッフをアクティベート",
+        "parameters": [{ "name": "staffId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "" } },
+        "tags": ["AdminStaffService"]
+      }
+    },
+    "/admin/grades": {
+      "get": {
+        "operationId": "AdminGradeController_list",
+        "summary": "グレード一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminListGradesResponse" } } }
+          }
+        },
+        "tags": ["AdminGradeService"]
+      },
+      "post": {
+        "operationId": "AdminGradeController_create",
+        "summary": "グレードを新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateGradeRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateGradeResponse" } } }
+          }
+        },
+        "tags": ["AdminGradeService"]
+      }
+    },
+    "/admin/grades/{gradeId}": {
+      "get": {
+        "operationId": "AdminGradeController_get",
+        "summary": "グレードの詳細情報を取得",
+        "parameters": [{ "name": "gradeId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetGradesResponse" } } }
+          }
+        },
+        "tags": ["AdminGradeService"]
+      },
+      "patch": {
+        "operationId": "AdminGradeController_update",
+        "summary": "グレードの詳細情報を変更",
+        "parameters": [{ "name": "gradeId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateGradeRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateGradeResponse" } } }
+          }
+        },
+        "tags": ["AdminGradeService"]
+      },
+      "delete": {
+        "operationId": "AdminGradeController_deactivate",
+        "summary": "グレードを削除",
+        "parameters": [{ "name": "gradeId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminGradeService"]
+      }
+    },
+    "/admin/colors": {
+      "get": {
+        "operationId": "AdminColorController_list",
+        "summary": "カラー一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminListColorsResponse" } } }
+          }
+        },
+        "tags": ["AdminColorService"]
+      },
+      "post": {
+        "operationId": "AdminColorController_create",
+        "summary": "カラーを新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateColorRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateColorResponse" } } }
+          }
+        },
+        "tags": ["AdminColorService"]
+      }
+    },
+    "/admin/colors/{colorId}": {
+      "get": {
+        "operationId": "AdminColorController_get",
+        "summary": "カラーの詳細情報を取得",
+        "parameters": [{ "name": "colorId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetColorsResponse" } } }
+          }
+        },
+        "tags": ["AdminColorService"]
+      },
+      "patch": {
+        "operationId": "AdminColorController_update",
+        "summary": "カラーの詳細情報を変更",
+        "parameters": [{ "name": "colorId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateColorRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateColorResponse" } } }
+          }
+        },
+        "tags": ["AdminColorService"]
+      },
+      "delete": {
+        "operationId": "AdminColorController_deactivate",
+        "summary": "カラーを削除",
+        "parameters": [{ "name": "colorId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminColorService"]
+      }
+    },
+    "/admin/features": {
+      "get": {
+        "operationId": "AdminFeatureController_list",
+        "summary": "グレード特徴一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminListFeaturesResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminFeatureService"]
+      },
+      "post": {
+        "operationId": "AdminFeatureController_create",
+        "summary": "グレード特徴を新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateFeatureRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateFeatureResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminFeatureService"]
+      }
+    },
+    "/admin/features/{featureId}": {
+      "get": {
+        "operationId": "AdminFeatureController_get",
+        "summary": "グレード特徴の詳細情報を取得",
+        "parameters": [{ "name": "featureId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetFeaturesResponse" } } }
+          }
+        },
+        "tags": ["AdminFeatureService"]
+      },
+      "patch": {
+        "operationId": "AdminFeatureController_update",
+        "summary": "グレード特徴の詳細情報を変更",
+        "parameters": [{ "name": "featureId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateFeatureRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateFeatureResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminFeatureService"]
+      },
+      "delete": {
+        "operationId": "AdminFeatureController_deactivate",
+        "summary": "グレード特徴を削除",
+        "parameters": [{ "name": "featureId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminFeatureService"]
+      }
+    },
+    "/admin/feature_details": {
+      "get": {
+        "operationId": "AdminFeatureDetailController_list",
+        "summary": "グレード特徴詳細一覧を取得",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: ページ番号",
+            "schema": { "default": 1, "type": "number" }
+          },
+          {
+            "name": "perPage",
+            "required": false,
+            "in": "query",
+            "description": "ページネーション: 1ページのデータ数",
+            "schema": { "default": 10, "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminListFeatureDetailsResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminFeatureDetailService"]
+      },
+      "post": {
+        "operationId": "AdminFeatureDetailController_create",
+        "summary": "グレード特徴詳細を新規作成",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateFeatureDetailRequestBody" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminCreateFeatureDetailResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminFeatureDetailService"]
+      }
+    },
+    "/admin/feature_details/{featureDetailId}": {
+      "get": {
+        "operationId": "AdminFeatureDetailController_get",
+        "summary": "グレード特徴詳細の詳細情報を取得",
+        "parameters": [{ "name": "featureDetailId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminGetFeatureDetailsResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminFeatureDetailService"]
+      },
+      "patch": {
+        "operationId": "AdminFeatureDetailController_update",
+        "summary": "グレード特徴詳細の詳細情報を変更",
+        "parameters": [{ "name": "featureDetailId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateFeatureDetailRequestBody" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AdminUpdateFeatureDetailResponse" } }
+            }
+          }
+        },
+        "tags": ["AdminFeatureDetailService"]
+      },
+      "delete": {
+        "operationId": "AdminFeatureDetailController_deactivate",
+        "summary": "グレード特徴詳細を削除",
+        "parameters": [{ "name": "featureDetailId", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": { "204": { "description": "" } },
+        "tags": ["AdminFeatureDetailService"]
+      }
+    }
+  }
+}
