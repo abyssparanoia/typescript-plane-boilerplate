@@ -29,9 +29,6 @@ jobs:
       - name: Prepare file
         run: |
           cp packages/backend/.env.test.tmpl packages/backend/.env
-          cp packages/admin/.env.tmpl packages/admin/.env
-          cp dummy.firebase.client.key.json packages/firebase-client/firebase.client.key.json
-          cp dummy.googleCredential.json packages/backend/googleCredential.json
 
       - name: Setup mysql
         run: |
@@ -51,7 +48,7 @@ jobs:
           yarn workspace @account-viewer/backend migration:run
           yarn workspace @account-viewer/backend migration:generate -n ci_check || echo "No changes in database schema were found"
 
-      # - name: Check diff
-      #   run: |
-      #     git add -N .
-      #     git diff --exit-code .
+      - name: Check diff
+        run: |
+          git add -N .
+          git diff --exit-code .
