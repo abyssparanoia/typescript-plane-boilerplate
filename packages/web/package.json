@@ -42,7 +42,7 @@
     "@storybook/addon-storysource": "6.3.2",
     "@storybook/addons": "6.3.2",
     "@storybook/react": "6.3.2",
-    "@types/faker": "5.5.6",
+    "@types/faker": "5.5.7",
     "@types/node": "13.13.51",
     "@types/react": "17.0.13",
     "@types/react-dom": "17.0.9",
