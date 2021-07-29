@@ -40,7 +40,7 @@
     "rimraf": "3.0.2",
     "rxjs": "7.2.0",
     "swagger-ui-express": "4.1.6",
-    "typeorm": "0.2.34",
+    "typeorm": "0.2.35",
     "typeorm-transactional-cls-hooked": "0.1.21",
     "uuid": "8.3.2",
     "winston": "3.3.3"
