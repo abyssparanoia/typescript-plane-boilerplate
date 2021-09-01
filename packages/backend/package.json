@@ -1,5 +1,5 @@
 {
-  "name": "@account-viewer/backend",
+  "name": "@typescript-plane-boilerplate/backend",
   "version": "0.0.1",
   "private": true,
   "description": "",
@@ -26,7 +26,7 @@
     "@nestjs/platform-express": "8.0.6",
     "@nestjs/swagger": "5.0.9",
     "@nestjs/typeorm": "8.0.2",
-    "@account-viewer/interface": "0.0.1",
+    "@typescript-plane-boilerplate/interface": "0.0.1",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",
     "date-fns": "2.23.0",

@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  account-viewer-db:
+  typescript-plane-boilerplate-db:
     build: ./db
     volumes:
       - ./db/data:/var/lib/mysql
@@ -13,9 +13,9 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: accountviewer
 
-  account-viewer-schema:
+  typescript-plane-boilerplate-schema:
     depends_on:
-      - account-viewer-db
+      - typescript-plane-boilerplate-db
     image: schemaspy/schemaspy:snapshot
     volumes:
       - ./packages/erd/src:/output

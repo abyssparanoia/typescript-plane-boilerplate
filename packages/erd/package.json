@@ -1,5 +1,5 @@
 {
-  "name": "@account-viewer/erd",
+  "name": "@typescript-plane-boilerplate/erd",
   "version": "0.0.1",
   "private": true,
   "scripts": {

@@ -44,10 +44,10 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/@account-viewer/admin/",
-      "**/@account-viewer/admin/**",
-      "**/@account-viewer/web/",
-      "**/@account-viewer/web/**"
+      "**/@typescript-plane-boilerplate/admin/",
+      "**/@typescript-plane-boilerplate/admin/**",
+      "**/@typescript-plane-boilerplate/web/",
+      "**/@typescript-plane-boilerplate/web/**"
     ]
   },
   "husky": {
