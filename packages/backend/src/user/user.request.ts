@@ -5,7 +5,7 @@ import {
   ExtractPropertyType,
   UpdateUserRequest,
   ListUsersRequest
-} from '@account-viewer/interface'
+} from '@typescript-plane-boilerplate/interface'
 import { IsString, IsOptional } from 'class-validator'
 import { PaginationQuery, UnixTimestamp } from '../base/bose.request'
 

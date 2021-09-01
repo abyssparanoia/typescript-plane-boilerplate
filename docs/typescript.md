@@ -28,14 +28,14 @@
 > docker-compose up -d
 
 # nestjs serverの起動
-> yarn workspace @account-viewer/backend start:dev
+> yarn workspace @typescript-plane-boilerplate/backend start:dev
 
 # nextjs 管理画面起動
-> yarn workspace @account-viewer/admin start:dev
+> yarn workspace @typescript-plane-boilerplate/admin start:dev
 
 # erd更新
 > docker-compose up -d
 
 # erd起動
-> yarn workspace @account-viewer/erd start
+> yarn workspace @typescript-plane-boilerplate/erd start
 ```

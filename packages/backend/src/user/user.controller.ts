@@ -5,14 +5,14 @@ import {
   ListUsersResponse,
   UpdateUserResponse,
   newPagination
-} from '@account-viewer/interface'
+} from '@typescript-plane-boilerplate/interface'
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { CreateUserRequestBody, ListUsersRequestQuery, UpdateUserRequestBody } from './user.request'
 import { UserService } from './user.service'
 
 @ApiTags('UserService')
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

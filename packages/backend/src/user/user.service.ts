@@ -1,4 +1,5 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
 import { FindManyOptions, IsNull } from 'typeorm'
 import { Transactional } from 'typeorm-transactional-cls-hooked'
 import { calcPaginationParam, datetime, generateEncodedUuid } from '../util'
@@ -6,7 +7,10 @@ import { User, UserRepository } from './user.entity'
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: UserRepository
+  ) {}
 
   async get(id: string) {
     return this.userRepository.findOneOrFail(id, { where: { deletedAt: IsNull() } }).catch(_ => {

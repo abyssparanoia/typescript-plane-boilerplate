@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     services:
       mysql:
@@ -32,7 +32,7 @@ jobs:
 
       - name: Setup mysql
         run: |
-          mysql -uroot -h127.0.0.1 -ppassword -e 'CREATE DATABASE IF NOT EXISTS accountviewer'
+          mysql -uroot -h127.0.0.1 -ppassword -e 'CREATE DATABASE IF NOT EXISTS maindb'
 
       - name: Install deps
         run: yarn
@@ -45,8 +45,8 @@ jobs:
 
       - name: Run DB migration
         run: |
-          yarn workspace @account-viewer/backend migration:run
-          yarn workspace @account-viewer/backend migration:generate -n ci_check || echo "No changes in database schema were found"
+          yarn workspace @typescript-plane-boilerplate/backend migration:run
+          yarn workspace @typescript-plane-boilerplate/backend migration:generate -n ci_check || echo "No changes in database schema were found"
 
       - name: Check diff
         run: |
