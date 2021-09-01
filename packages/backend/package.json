@@ -8,9 +8,9 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "prebuild": "yarn clean",
-    "start:dev": "nodemon --config nodemon.json",
+    "start:dev": "ts-node-dev src/app/bootstrap.ts",
     "start:prod": "NODE_ENV=production node dist/app/bootstrap.js",
-    "start:swagger": "IS_SWAGGER_PROCESS=true nodemon --watch ./src --ext ts --exec 'ts-node -r tsconfig-paths/register ./src/swagger/bootstrap.ts'",
+    "start:swagger": "IS_SWAGGER_PROCESS=true ts-node-dev src/swagger/bootstrap.ts",
     "start:swagger:prod": "node dist/swagger/swagger-ui-server.js",
     "test": "jest",
     "clean": "rimraf dist",
