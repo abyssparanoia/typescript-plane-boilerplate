@@ -15,9 +15,9 @@
     "test": "jest",
     "clean": "rimraf dist",
     "format:swagger": "prettier --write swagger.json",
-    "migration:generate": "NODE_ENV=development ts-node node_modules/.bin/typeorm -f src/type-orm.option.ts migration:generate",
-    "migration:run": "NODE_ENV=development ts-node node_modules/.bin/typeorm -f src/type-orm.option.ts migration:run",
-    "migration:run:prod": "NODE_ENV=production ts-node node_modules/.bin/typeorm -f src/type-orm.option.ts migration:run"
+    "migration:generate": "NODE_ENV=development ts-node --cwd-mode node_modules/.bin/typeorm -f src/type-orm.option.ts migration:generate",
+    "migration:run": "NODE_ENV=development ts-node --cwd-mode node_modules/.bin/typeorm -f src/type-orm.option.ts migration:run",
+    "migration:run:prod": "NODE_ENV=production ts-node --cwd-mode node_modules/.bin/typeorm -f src/type-orm.option.ts migration:run"
   },
   "dependencies": {
     "@nestjs/common": "8.0.6",

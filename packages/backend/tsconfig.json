@@ -19,7 +19,7 @@
     "strict": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
-    "target": "es2017",
+    "target": "esnext",
     "types": ["jest", "node"]
   }
 }
