@@ -11,7 +11,7 @@ services:
     environment:
       TZ: 'Asia/Tokyo'
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: accountviewer
+      MYSQL_DATABASE: maindb
 
   typescript-plane-boilerplate-schema:
     depends_on:

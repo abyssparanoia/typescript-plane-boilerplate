@@ -32,7 +32,7 @@ jobs:
 
       - name: Setup mysql
         run: |
-          mysql -uroot -h127.0.0.1 -ppassword -e 'CREATE DATABASE IF NOT EXISTS accountviewer'
+          mysql -uroot -h127.0.0.1 -ppassword -e 'CREATE DATABASE IF NOT EXISTS maindb'
 
       - name: Install deps
         run: yarn
