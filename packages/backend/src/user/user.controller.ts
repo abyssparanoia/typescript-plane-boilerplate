@@ -12,7 +12,7 @@ import { CreateUserRequestBody, ListUsersRequestQuery, UpdateUserRequestBody } f
 import { UserService } from './user.service'
 
 @ApiTags('UserService')
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
