@@ -34,7 +34,7 @@
     "dotenv": "10.0.0",
     "envalid": "7.2.2",
     "express": "4.17.1",
-    "generate-password": "1.6.1",
+    "generate-password": "1.7.0",
     "mysql": "2.18.1",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
