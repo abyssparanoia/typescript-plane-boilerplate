@@ -31,8 +31,8 @@
     "swr": "1.1.2"
   },
   "devDependencies": {
-    "@babel/core": "7.16.5",
-    "@babel/preset-react": "7.16.5",
+    "@babel/core": "7.16.7",
+    "@babel/preset-react": "7.16.7",
     "@storybook/addon-actions": "6.4.9",
     "@storybook/addon-backgrounds": "6.4.9",
     "@storybook/addon-docs": "6.4.9",
