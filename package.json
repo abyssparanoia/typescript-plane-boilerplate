@@ -36,7 +36,7 @@
     "wait-on": "6.0.0"
   },
   "resolutions": {
-    "@types/react": "17.0.38"
+    "@types/react": "17.0.39"
   },
   "private": true,
   "workspaces": {
