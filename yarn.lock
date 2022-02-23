@@ -16087,7 +16087,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@7.5.4:
+rxjs@7.5.4, rxjs@^7.5.4:
   version "7.5.4"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.4.tgz#3d6bd407e6b7ce9a123e76b1e770dc5761aa368d"
   integrity sha512-h5M3Hk78r6wAheJF0a5YahB1yRQKCsZ4MsGdZ5O9ETbVtjPcScGfrMmoOq7EBsCRzd4BDkvDJ7ogP8Sz5tTFiQ==
@@ -16100,13 +16100,6 @@ rxjs@^6.6.0, rxjs@^6.6.3:
   integrity sha512-/oTwee4N4iWzAMAL9xdGKjkEHmIwupR3oXbQjCKywF1BeFohswF3vZdogbmEF6pZkOsXTzWkrZszrWpQTByYVg==
   dependencies:
     tslib "^1.9.0"
-
-rxjs@^7.5.4:
-  version "7.5.4"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.4.tgz#3d6bd407e6b7ce9a123e76b1e770dc5761aa368d"
-  integrity sha512-h5M3Hk78r6wAheJF0a5YahB1yRQKCsZ4MsGdZ5O9ETbVtjPcScGfrMmoOq7EBsCRzd4BDkvDJ7ogP8Sz5tTFiQ==
-  dependencies:
-    tslib "^2.1.0"
 
 rxjs@^7.5.2:
   version "7.5.2"
@@ -17852,10 +17845,10 @@ typeorm-transactional-cls-hooked@0.1.21:
     "@types/cls-hooked" "^4.2.1"
     cls-hooked "^4.2.2"
 
-typeorm@0.2.41:
-  version "0.2.41"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.41.tgz#88758101ac158dc0a0a903d70eaacea2974281cc"
-  integrity sha512-/d8CLJJxKPgsnrZWiMyPI0rz2MFZnBQrnQ5XP3Vu3mswv2WPexb58QM6BEtmRmlTMYN5KFWUz8SKluze+wS9xw==
+typeorm@0.2.44:
+  version "0.2.44"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.44.tgz#4cc07eb1eb7a0e7f3ec9e65ded9eb3c3aedbb3e1"
+  integrity sha512-yFyb9Ts73vGaS/O06TvLpzvT5U/ngO31GeciNc0eoH7P1QcG8kVZdOy9FHJqkTeDmIljMRgWjbYUoMw53ZY7Xw==
   dependencies:
     "@sqltools/formatter" "^1.2.2"
     app-root-path "^3.0.0"
@@ -17870,6 +17863,7 @@ typeorm@0.2.41:
     reflect-metadata "^0.1.13"
     sha.js "^2.4.11"
     tslib "^2.1.0"
+    uuid "^8.3.2"
     xml2js "^0.4.23"
     yargs "^17.0.1"
     zen-observable-ts "^1.0.0"
@@ -18204,7 +18198,7 @@ uuid-browser@^3.1.0:
   resolved "https://registry.yarnpkg.com/uuid-browser/-/uuid-browser-3.1.0.tgz#0f05a40aef74f9e5951e20efbf44b11871e56410"
   integrity sha1-DwWkCu90+eWVHiDvv0SxGHHlZBA=
 
-uuid@8.3.2:
+uuid@8.3.2, uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
