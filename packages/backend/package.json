@@ -52,7 +52,7 @@
     "@types/node": "14.18.23",
     "@types/rimraf": "3.0.2",
     "@types/uuid": "8.3.4",
-    "eslint-plugin-prettier": "4.0.0"
+    "eslint-plugin-prettier": "4.2.1"
   },
   "jest": {
     "moduleFileExtensions": [
