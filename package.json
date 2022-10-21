@@ -61,9 +61,6 @@
     ]
   },
   "engines": {
-    "node": "14"
-  },
-  "dependencies": {
-    "@types/react": "18.0.21"
+    "node": "16"
   }
 }
