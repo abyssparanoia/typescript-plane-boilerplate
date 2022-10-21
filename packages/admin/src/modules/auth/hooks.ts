@@ -76,7 +76,7 @@ export const useSignIn = () => {
             throw new Error('ユーザーが存在しません')
           }
         } catch (error: any) {
-          console.log(error)
+          console.error(error)
           handleError(error, setError)
         } finally {
           setIsLoading(false)
