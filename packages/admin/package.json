@@ -4,8 +4,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start:dev": "next dev -p 3003",
-    "start:prod": "next start -p 3003",
+    "start:dev": "next dev -p 3000",
+    "start:prod": "next start -p 3000",
     "build": "run-p -l build:*",
     "build:next": "next build"
   },
