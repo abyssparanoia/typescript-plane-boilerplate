@@ -1,0 +1,39 @@
+{
+  "name": "@typescript-plane-boilerplate/components",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "typings": "esm/index.d.ts",
+  "scripts": {
+    "build": "run-p -l build:*",
+    "build:cjs": "tsc --project . --module commonjs --outDir ./cjs",
+    "build:esm": "tsc --project . --module es2015 --outDir ./esm",
+    "clean": "rimraf esm cjs",
+    "lint": "tsc -p . --noEmit",
+    "prebuild": "yarn clean",
+    "storybook": "start-storybook -s ./public -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "next": "12.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "5.3.5"
+  },
+  "devDependencies": {
+    "@babel/core": "7.18.6",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.5",
+    "@types/styled-components": "5.1.25",
+    "babel-loader": "8.2.5",
+    "babel-plugin-styled-components": "2.0.7",
+    "@storybook/addon-actions": "6.5.9",
+    "@storybook/addon-essentials": "6.5.9",
+    "@storybook/addon-interactions": "6.5.9",
+    "@storybook/addon-links": "6.5.9",
+    "@storybook/react": "6.5.9",
+    "@storybook/testing-library": "0.0.13"
+  }
+}
