@@ -29,6 +29,7 @@ jobs:
       - name: Prepare file
         run: |
           cp packages/backend/.env.test.tmpl packages/backend/.env
+          cp packages/admin/.env.tmpl packages/admin/.env
 
       - name: Setup mysql
         run: |
