@@ -32,7 +32,7 @@
     "recoil": "0.7.7"
   },
   "devDependencies": {
-    "@babel/core": "7.21.4",
+    "@babel/core": "7.21.8",
     "@types/express": "4.17.17",
     "@types/faker": "6.6.8",
     "@types/node": "16.18.25",
