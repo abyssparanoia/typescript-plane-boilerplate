@@ -20,7 +20,7 @@
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "6.0.1"
+    "styled-components": "6.0.2"
   },
   "devDependencies": {
     "@babel/core": "7.22.5",
