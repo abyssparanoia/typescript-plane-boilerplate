@@ -5,6 +5,7 @@ import { UserHandler } from './server/handler/user'
 import { attachLogger } from './server/middleware/attach-logger'
 import { Logger } from '../../util/logger'
 import { requestLogging } from './server/middleware/request-logging'
+import { errorLogging } from './server/middleware/error-logging'
 
 declare global {
   namespace Express {
@@ -20,7 +21,6 @@ export const runHttpServer = () => {
 
   const app = express()
   app.use(attachLogger)
-  app.use(requestLogging)
 
   app.get('/', (_req, res) => {
     res.send('hello world')
@@ -30,6 +30,8 @@ export const runHttpServer = () => {
     asyncWrapper((req, res) => userHandler.get(req, res))
   )
 
+  app.use(requestLogging)
+  app.use(errorLogging)
   app.listen(environment.PORT, () => console.log(`Example app listening on port ${environment.PORT}!`))
 }
 

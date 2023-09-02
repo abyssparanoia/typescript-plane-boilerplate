@@ -8,18 +8,24 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "start:dev": "ts-node-dev src/cmd/bootstrap.ts run-http-server",
-    "start:prod": "NODE_ENV=production node dist/cmd/bootstrap.js run-http-server"
+    "start:prod": "NODE_ENV=production node dist/src/cmd/bootstrap.js run-http-server",
+    "migration:generate": "drizzle-kit generate:mysql",
+    "migration:run:dev": "ts-node src/cmd/bootstrap.ts migrate.up",
+    "migration:run:prod": "NODE_ENV=production node dist/src/cmd/bootstrap.js migrate.up"
   },
   "dependencies": {
     "@paralleldrive/cuid2": "2.2.2",
     "cac": "6.7.14",
+    "drizzle-orm": "^0.28.5",
     "envalid": "7.3.1",
     "express": "4.18.2",
+    "mysql2": "^3.6.0",
     "uuid": "9.0.0",
     "winston": "3.10.0"
   },
   "devDependencies": {
-    "@types/express": "4.17.17"
+    "@types/express": "4.17.17",
+    "drizzle-kit": "^0.19.13"
   },
   "jest": {
     "moduleFileExtensions": [

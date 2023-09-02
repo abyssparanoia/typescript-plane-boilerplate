@@ -30,7 +30,7 @@ class UserInteractorImpl implements UserInteractor {
   constructor(readonly _: Logger, private readonly userRepository: UserRepository) {}
 
   public async get(input: UserInteractorGetInput): Promise<UserInteractorGetOutput> {
-    const user = await this.userRepository.get({ id: input.id })
-    return { user }
+    const user = await this.userRepository.get({ id: input.id, orFail: true })
+    return { user: user! }
   }
 }
