@@ -7,12 +7,13 @@ class UserRepositoryImpl implements UserRepository {
   constructor() {}
 
   public async get(_: UserRepositoryGetQuery): Promise<User> {
-    return {
+    const user = {
       id: '1',
       name: 'John',
       email: '',
       createdAt: new Date(),
       updatedAt: new Date()
     }
+    return user
   }
 }
