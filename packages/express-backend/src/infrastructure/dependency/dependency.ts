@@ -1,14 +1,14 @@
-import { UserInteractor, newUserInteractor } from '../../usecase/user'
-import { newUserRepository } from '../mysql/repository/user'
+import { UserInteractorFactory, newUserInteractorFactory } from '../../usecase/user'
+import { newUserRepositoryFactory } from '../mysql/repository/user'
 
 export interface Dependency {
-  userInteractor: UserInteractor
+  userInteractorFactory: UserInteractorFactory
 }
 
 export const newDependency = (): Dependency => {
-  const userRepository = newUserRepository()
+  const userRepositoryFactory = newUserRepositoryFactory()
 
   return {
-    userInteractor: newUserInteractor(userRepository)
+    userInteractorFactory: newUserInteractorFactory(userRepositoryFactory)
   }
 }
