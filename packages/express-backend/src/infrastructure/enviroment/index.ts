@@ -6,6 +6,6 @@ export const environment = cleanEnv(process.env, {
   DB_PORT: num(),
   DB_USER: str(),
   DB_PASSWORD: str(),
-  DB_DEBUG_LOG: bool({ default: true }),
+  DB_DEBUG_LOG: bool({ default: false }),
   PORT: num({ default: 3002 })
 })
