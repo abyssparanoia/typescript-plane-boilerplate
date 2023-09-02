@@ -5,7 +5,7 @@ import { BaseGetOptions } from './base'
 export type UserRepositoryFactory = (logger: Logger) => UserRepository
 
 export interface UserRepository {
-  get(query: UserRepositoryGetQuery): Promise<User>
+  get(query: UserRepositoryGetQuery): Promise<User | undefined>
 }
 
 export type UserRepositoryGetQuery = {
