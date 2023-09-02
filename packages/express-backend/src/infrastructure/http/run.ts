@@ -16,7 +16,7 @@ declare global {
 }
 export const runHttpServer = () => {
   const dependency = newDependency()
-  const userHandler = new UserHandler(dependency.userInteractor)
+  const userHandler = new UserHandler(dependency.userInteractorFactory)
 
   const app = express()
   app.use(attachLogger)
