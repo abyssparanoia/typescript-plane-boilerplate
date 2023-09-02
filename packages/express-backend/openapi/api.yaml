@@ -1,0 +1,61 @@
+openapi: 3.0.0
+x-stoplight:
+  id: 6km5rau3tev5g
+info:
+  title: api
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3002'
+paths:
+  '/v1/users/{userId}':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+        description: Id of an existing user.
+    get:
+      summary: Get User Info by User ID
+      tags: []
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                type: object
+                title: GetUserResponse
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                required:
+                  - user
+        '404':
+          description: User Not Found
+      operationId: getUser
+      description: Retrieve the information of the user with the matching user ID.
+components:
+  schemas:
+    User:
+      title: User
+      x-stoplight:
+        id: dzs7bc8277r6i
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - name
+        - email
+        - createdAt
+        - updatedAt
