@@ -1,5 +1,8 @@
 import { User } from '../domain/model/user'
-import { UserRepository } from '../domain/repository/user'
+import { UserRepository, UserRepositoryFactory } from '../domain/repository/user'
+import { Logger } from '../util/logger'
+
+export type UserInteractorFactory = (logger: Logger) => UserInteractor
 
 export interface UserInteractor {
   get(input: UserInteractorGetInput): Promise<UserInteractorGetOutput>
@@ -13,12 +16,18 @@ type UserInteractorGetOutput = {
   user: User
 }
 
-export const newUserInteractor = (userRepository: UserRepository): UserInteractor => {
-  return new UserInteractorImpl(userRepository)
+export const newUserInteractorFactory = (userRepositoryFactory: UserRepositoryFactory): UserInteractorFactory => {
+  return (logger: Logger): UserInteractor => {
+    return newUserInteractor(logger, userRepositoryFactory(logger))
+  }
+}
+
+const newUserInteractor = (logger: Logger, userRepository: UserRepository): UserInteractor => {
+  return new UserInteractorImpl(logger, userRepository)
 }
 
 class UserInteractorImpl implements UserInteractor {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(readonly _: Logger, private readonly userRepository: UserRepository) {}
 
   public async get(input: UserInteractorGetInput): Promise<UserInteractorGetOutput> {
     const user = await this.userRepository.get({ id: input.id })
