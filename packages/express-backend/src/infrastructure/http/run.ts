@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express'
+import express from 'express'
 import { environment } from '../enviroment'
 import { newDependency } from '../dependency/dependency'
 import { UserHandler } from './server/handler/user'
@@ -35,16 +35,10 @@ export const runHttpServer = () => {
     apiDoc: './openapi/api.yaml',
     validateApiDoc: true,
     operations: {
-      getUser: asyncWrapper((req, res) => userHandler.get(req, res))
+      getUser: (req, res) => userHandler.get(req, res)
     },
     errorMiddleware: errorLogging,
     promiseMode: true
   })
   app.listen(environment.PORT, () => console.log(`Example app listening on port ${environment.PORT}!`))
-}
-
-const asyncWrapper = (fn: (req: Request, res: Response, next: NextFunction) => Promise<void>) => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    return fn(req, res, next).catch(next)
-  }
 }
