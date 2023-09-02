@@ -4,6 +4,7 @@ import { newDependency } from '../dependency/dependency'
 import { UserHandler } from './server/handler/user'
 import { attachLogger } from './server/middleware/attach-logger'
 import { Logger } from '../../util/logger'
+import { requestLogging } from './server/middleware/request-logging'
 
 declare global {
   namespace Express {
@@ -19,11 +20,9 @@ export const runHttpServer = () => {
 
   const app = express()
   app.use(attachLogger)
+  app.use(requestLogging)
 
-  app.get('/', (req, res) => {
-    req.logger.info('request log', {
-      path: req.path
-    })
+  app.get('/', (_req, res) => {
     res.send('hello world')
   })
   app.get(
