@@ -1,16 +1,17 @@
 import { Request, Response } from 'express'
-import { UserInteractor } from '../../../../usecase/user'
+import { UserInteractorFactory } from '../../../../usecase/user'
 
-export const newUserHandler = (userInteractor: UserInteractor) => {
-  return new UserHandler(userInteractor)
+export const newUserHandler = (userInteractorFactory: UserInteractorFactory) => {
+  return new UserHandler(userInteractorFactory)
 }
 
 export class UserHandler {
-  constructor(private readonly userInteractor: UserInteractor) {}
+  constructor(private readonly userInteractorFactory: UserInteractorFactory) {}
 
   public async get(req: Request, res: Response) {
+    const userInteractor = this.userInteractorFactory(req.logger)
     const { userId } = req.params
-    const user = await this.userInteractor.get({ id: userId })
+    const user = await userInteractor.get({ id: userId })
     res.json(user)
   }
 }
