@@ -1,5 +1,6 @@
 import { UserInteractorFactory, newUserInteractorFactory } from '../../usecase/user'
 import { mysqlClient } from '../mysql/client'
+import { newTransactable } from '../mysql/repository/transactable'
 import { newUserRepositoryFactory } from '../mysql/repository/user'
 
 export interface Dependency {
@@ -7,9 +8,10 @@ export interface Dependency {
 }
 
 export const newDependency = (): Dependency => {
-  const userRepositoryFactory = newUserRepositoryFactory(mysqlClient)
+  const transactable = newTransactable(mysqlClient)
+  const userRepositoryFactory = newUserRepositoryFactory()
 
   return {
-    userInteractorFactory: newUserInteractorFactory(userRepositoryFactory)
+    userInteractorFactory: newUserInteractorFactory(transactable, userRepositoryFactory)
   }
 }

@@ -1,4 +1,5 @@
 import { User } from '../domain/model/user'
+import { Transactable } from '../domain/repository/transactable'
 import { UserRepository, UserRepositoryFactory } from '../domain/repository/user'
 import { Logger } from '../util/logger'
 
@@ -16,21 +17,35 @@ type UserInteractorGetOutput = {
   user: User
 }
 
-export const newUserInteractorFactory = (userRepositoryFactory: UserRepositoryFactory): UserInteractorFactory => {
+export const newUserInteractorFactory = (
+  transactable: Transactable,
+  userRepositoryFactory: UserRepositoryFactory
+): UserInteractorFactory => {
   return (logger: Logger): UserInteractor => {
-    return newUserInteractor(logger, userRepositoryFactory(logger))
+    return newUserInteractor(logger, transactable, userRepositoryFactory(logger))
   }
 }
 
-const newUserInteractor = (logger: Logger, userRepository: UserRepository): UserInteractor => {
-  return new UserInteractorImpl(logger, userRepository)
+const newUserInteractor = (
+  logger: Logger,
+  transactable: Transactable,
+  userRepository: UserRepository
+): UserInteractor => {
+  return new UserInteractorImpl(logger, transactable, userRepository)
 }
 
 class UserInteractorImpl implements UserInteractor {
-  constructor(readonly _: Logger, private readonly userRepository: UserRepository) {}
+  constructor(
+    readonly _: Logger,
+    private readonly transactable: Transactable,
+    private readonly userRepository: UserRepository
+  ) {}
 
   public async get(input: UserInteractorGetInput): Promise<UserInteractorGetOutput> {
-    const user = await this.userRepository.get({ id: input.id, orFail: true })
+    let user: User
+    await this.transactable.ROTx(async ctx => {
+      user = await this.userRepository.get(ctx, { id: input.id }, { orFail: true })
+    })
     return { user: user! }
   }
 }

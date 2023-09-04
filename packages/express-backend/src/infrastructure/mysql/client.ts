@@ -9,13 +9,12 @@ const poolConnection = mysql.createPool({
   port: environment.DB_PORT,
   user: environment.DB_USER,
   password: environment.DB_PASSWORD,
-  database: 'maindb',
-  debug: environment.DB_DEBUG_LOG
+  database: 'maindb'
 })
 
 export type MySqlClient = MySql2Database<typeof schema>
 
-export const mysqlClient = drizzle(poolConnection, { schema, mode: 'default' })
+export const mysqlClient = drizzle(poolConnection, { schema, mode: 'default', logger: environment.DB_DEBUG_LOG })
 
 export const runMigrate = async () => {
   await migrate(mysqlClient, {
