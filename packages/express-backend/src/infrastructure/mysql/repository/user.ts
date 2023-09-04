@@ -1,26 +1,38 @@
 import { UserRepository, UserRepositoryFactory, UserRepositoryGetQuery } from '../../../domain/repository/user'
 import { User } from '../../../domain/model/user'
 import { Logger } from '../../../util/logger'
-import { MySqlClient } from '../client'
 import { ApplicationError } from '../../../util/application-error'
+import { TransactionContext } from '../../../domain/repository/transactable'
+import { getTransactionFromContext } from './transactable'
 
-export const newUserRepositoryFactory = (cli: MySqlClient): UserRepositoryFactory => {
+export const newUserRepositoryFactory = (): UserRepositoryFactory => {
   return (logger: Logger): UserRepository => {
-    return newUserRepository(logger, cli)
+    return newUserRepository(logger)
   }
 }
 
-const newUserRepository = (logger: Logger, cli: MySqlClient): UserRepository => new UserRepositoryImpl(logger, cli)
+const newUserRepository = (logger: Logger): UserRepository => new UserRepositoryImpl(logger)
 
 class UserRepositoryImpl implements UserRepository {
-  constructor(readonly logger: Logger, private readonly cli: MySqlClient) {}
+  constructor(readonly logger: Logger) {}
 
-  public async get(query: UserRepositoryGetQuery): Promise<User | undefined> {
-    const dbUser = await this.cli.query.users.findFirst({ where: (users, { eq }) => eq(users.id, query.id!) })
-    if (!dbUser) {
-      if (query.orFail) {
-        throw new ApplicationError(`user ${query.id!} not found`, 404)
-      }
+  public async get(ctx: TransactionContext, query: UserRepositoryGetQuery, option: { orFail: true }): Promise<User>
+  public async get(
+    ctx: TransactionContext,
+    query: UserRepositoryGetQuery,
+    option: { orFail: false }
+  ): Promise<User | undefined>
+  public async get(
+    ctx: TransactionContext,
+    query: UserRepositoryGetQuery,
+    option: { orFail: boolean }
+  ): Promise<User | undefined> {
+    const dbUser = await getTransactionFromContext(ctx).query.users.findFirst({
+      where: (users, { eq }) => eq(users.id, query.id!)
+    })
+    if (!dbUser && option.orFail) {
+      throw new ApplicationError(`user ${query.id!} not found`, 404)
+    } else if (!dbUser) {
       return undefined
     }
     return {
