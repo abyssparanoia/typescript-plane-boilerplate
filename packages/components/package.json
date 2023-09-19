@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.22.5",
-    "@types/react": "18.2.21",
+    "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "@types/styled-components": "5.1.27",
     "babel-loader": "9.1.3",
