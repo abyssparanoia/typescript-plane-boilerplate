@@ -2,11 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 import { useAuthRequired } from 'src/modules/auth/hooks'
 
-type InitialProps = {}
-
-type Props = {} & InitialProps
-
-const About = (_: Props) => {
+const About = () => {
   useAuthRequired()
   return (
     <div>

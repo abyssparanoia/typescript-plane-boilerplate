@@ -1,11 +1,7 @@
 import React from 'react'
 import { useSignIn } from 'src/modules/auth/hooks'
 
-type InitialProps = {}
-
-type Props = {} & InitialProps
-
-const SignIn = (_: Props) => {
+const SignIn = () => {
   const { handleSignInWithGoogle } = useSignIn()
 
   return (
