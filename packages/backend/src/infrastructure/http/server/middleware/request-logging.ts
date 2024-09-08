@@ -5,7 +5,7 @@ export const requestLogging = (req: Request, res: Response, next: NextFunction) 
   next()
   res.on('finish', () => {
     if (res.statusCode < 400) {
-      req.logger.info(`${req.method}: ${req.url} -> ${res.statusCode}`, { headers, body, url, method })
+      req.logger.info(`${req.method}: ${req.url} -> ${res.statusCode.toString()}`, { headers, body, url, method })
     }
   })
 }

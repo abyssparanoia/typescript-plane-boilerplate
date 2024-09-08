@@ -33,24 +33,24 @@ export class Logger {
     return this.logger
   }
 
-  info(message: string, ...args: any[]) {
+  info(message: string, ...args: unknown[]) {
     this.logger.info(message, ...args)
   }
 
-  error(err: Error | string, ...args: any[]) {
+  error(err: Error | string, ...args: unknown[]) {
     // @ts-expect-error Winston logger accepts string or Error for error method
     this.logger.error(err, ...args)
   }
 
-  warn(message: string, ...args: any[]) {
+  warn(message: string, ...args: unknown[]) {
     this.logger.warn(message, ...args)
   }
 
-  debug(message: string, ...args: any[]) {
+  debug(message: string, ...args: unknown[]) {
     this.logger.debug(message, ...args)
   }
 
-  verbose(message: string, ...args: any[]) {
+  verbose(message: string, ...args: unknown[]) {
     this.logger.verbose(message, ...args)
   }
 }

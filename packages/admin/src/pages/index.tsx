@@ -9,7 +9,7 @@ const Index = () => {
 
   return (
     <div>
-      <button onClick={() => Router.push('/about')}>please click here!</button>
+      <button onClick={() => void Router.push('/about')}>please click here!</button>
       {!isLoggedIn && <button onClick={handleSignInWithGoogle}>sign in</button>}
       {isLoggedIn && <button onClick={handleSignOut}>sign out</button>}
     </div>

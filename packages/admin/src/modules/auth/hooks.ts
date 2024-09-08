@@ -38,12 +38,8 @@ export const useSignIn = () => {
           //   throw new Error('ログインする権限がありません')
           // }
 
-          if (user) {
-            set(authState, { isInit: true, isLoggedIn: true, uid: user.uid })
-            router.push('/')
-          } else {
-            throw new Error('ユーザーが存在しません')
-          }
+          set(authState, { isInit: true, isLoggedIn: true, uid: user.uid })
+          await router.push('/')
         } catch (error: any) {
           console.log(error)
           handleError(error, setError)
@@ -69,12 +65,8 @@ export const useSignIn = () => {
 
           console.log(user)
 
-          if (user) {
-            set(authState, { isInit: true, isLoggedIn: true, uid: user.uid })
-            router.push('/')
-          } else {
-            throw new Error('ユーザーが存在しません')
-          }
+          set(authState, { isInit: true, isLoggedIn: true, uid: user.uid })
+          await router.push('/')
         } catch (error: any) {
           console.error(error)
           handleError(error, setError)
@@ -106,9 +98,13 @@ export const useSignOut = () => {
           await authCli.signOut()
           set(authState, { isInit: true, isLoggedIn: false, uid: '' })
           setIsLoading(false)
-          router.push('/sign_in')
+          await router.push('/sign_in')
         } catch (error: any) {
-          setError(error)
+          if (error instanceof Error) {
+            setError(error)
+          } else {
+            setError(new Error('An unknown error occurred'))
+          }
         } finally {
           setIsLoading(false)
         }
@@ -147,7 +143,7 @@ export const useAuthRequired = () => {
   const router = useRouter()
   const auth = useRecoilValue(authState)
   if (!auth.isLoggedIn) {
-    router.push('/sign_in')
+    void router.push('/sign_in')
   }
 }
 

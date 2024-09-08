@@ -41,5 +41,10 @@ export const getTransactionFromContext = (
   typeof schema,
   ExtractTablesWithRelations<typeof schema>
 > => {
-  return ctx
+  return ctx as MySqlTransaction<
+    MySql2QueryResultHKT,
+    MySql2PreparedQueryHKT,
+    typeof schema,
+    ExtractTablesWithRelations<typeof schema>
+  >
 }

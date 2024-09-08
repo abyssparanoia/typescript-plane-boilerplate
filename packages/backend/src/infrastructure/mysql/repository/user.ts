@@ -27,11 +27,15 @@ class UserRepositoryImpl implements UserRepository {
     query: UserRepositoryGetQuery,
     option: { orFail: boolean }
   ): Promise<User | undefined> {
+    const { id } = query
+    if (!id) {
+      throw new ApplicationError('user id is required', 400)
+    }
     const dbUser = await getTransactionFromContext(ctx).query.users.findFirst({
-      where: (users, { eq }) => eq(users.id, query.id!)
+      where: (users, { eq }) => eq(users.id, id)
     })
     if (!dbUser && option.orFail) {
-      throw new ApplicationError(`user ${query.id!} not found`, 404)
+      throw new ApplicationError(`user ${id} not found`, 404)
     } else if (!dbUser) {
       return undefined
     }

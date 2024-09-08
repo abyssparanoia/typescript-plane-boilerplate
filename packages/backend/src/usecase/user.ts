@@ -1,6 +1,7 @@
 import { User } from '../domain/model/user'
 import { Transactable } from '../domain/repository/transactable'
 import { UserRepository, UserRepositoryFactory } from '../domain/repository/user'
+import { ApplicationError } from '../util/application-error'
 import { Logger } from '../util/logger'
 
 export type UserInteractorFactory = (logger: Logger) => UserInteractor
@@ -42,10 +43,11 @@ class UserInteractorImpl implements UserInteractor {
   ) {}
 
   public async get(input: UserInteractorGetInput): Promise<UserInteractorGetOutput> {
-    let user: User
+    let user: User | undefined
     await this.transactable.ROTx(async ctx => {
       user = await this.userRepository.get(ctx, { id: input.id }, { orFail: true })
     })
-    return { user: user! }
+    if (!user) throw new ApplicationError('User not found', 404)
+    return { user }
   }
 }

@@ -6,7 +6,7 @@ const About = () => {
   useAuthRequired()
   return (
     <div>
-      <button onClick={() => Router.push('/')}>please click here!</button>
+      <button onClick={() => void Router.push('/')}>please click here!</button>
     </div>
   )
 }
