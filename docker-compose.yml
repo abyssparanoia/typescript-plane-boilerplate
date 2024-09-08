@@ -18,6 +18,6 @@ services:
       - typescript-plane-boilerplate-db
     image: schemaspy/schemaspy:snapshot
     volumes:
-      - ./packages/erd/src:/output
-      - ./packages/erd/schemaspy.properties:/config/schemaspy.properties
+      - ./apps/erd/src:/output
+      - ./apps/erd/schemaspy.properties:/config/schemaspy.properties
     command: ['-configFile', '/config/schemaspy.properties', '-connprops', "useSSL\\=false"]
