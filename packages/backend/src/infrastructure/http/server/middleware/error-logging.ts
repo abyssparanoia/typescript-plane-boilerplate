@@ -12,9 +12,9 @@ export const errorLogging = (err: Error, req: Request, res: Response, _: NextFun
       err: err.serializeToJson()
     }
     if (err.statusCode < 500) {
-      req.logger.warn(`${req.method}: ${req.url} -> ${err.statusCode}`, logArgs)
+      req.logger.warn(`${req.method}: ${req.url} -> ${err.statusCode.toString()}`, logArgs)
     } else {
-      req.logger.error(`${req.method}: ${req.url} -> ${err.statusCode}`, logArgs)
+      req.logger.error(`${req.method}: ${req.url} -> ${err.statusCode.toString()}`, logArgs)
     }
     res.status(err.statusCode).json(err.serializeToJson())
   } else {
