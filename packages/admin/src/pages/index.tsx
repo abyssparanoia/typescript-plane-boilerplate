@@ -2,10 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 import { useSignIn, useSignOut, useIsLoggedIn } from 'src/modules/auth/hooks'
 
-type InitialProps = {}
-type Props = {} & InitialProps
-
-const Index = (_: Props) => {
+const Index = () => {
   const { handleSignInWithGoogle } = useSignIn()
   const { handleSignOut } = useSignOut()
   const { isLoggedIn } = useIsLoggedIn()
