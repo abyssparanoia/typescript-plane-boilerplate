@@ -13,9 +13,9 @@ declare global {
     interface Request {
       logger: Logger
     }
-    interface Response {}
   }
 }
+
 export const runHttpServer = () => {
   const dependency = newDependency()
   const userHandler = new UserHandler(dependency.userInteractorFactory)
