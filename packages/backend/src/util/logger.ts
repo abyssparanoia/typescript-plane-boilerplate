@@ -38,7 +38,7 @@ export class Logger {
   }
 
   error(err: Error | string, ...args: any[]) {
-    //@ts-expect-error
+    // @ts-expect-error Winston logger accepts string or Error for error method
     this.logger.error(err, ...args)
   }
 
