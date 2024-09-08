@@ -3,10 +3,7 @@
     "module": "esnext",
     "removeComments": true,
     "esModuleInterop": true,
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["dom", "es2017"],
     "target": "es6",
     "sourceMap": true,
     "rootDir": ".",
@@ -18,9 +15,7 @@
     "strictPropertyInitialization": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "allowJs": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -30,14 +25,6 @@
     "noEmit": true,
     "incremental": true
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "src/types/*.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules", "dist"],
+  "include": ["next-env.d.ts", "src/types/*.d.ts", "**/*.ts", "**/*.tsx"]
 }
