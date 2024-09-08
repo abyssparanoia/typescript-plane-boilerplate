@@ -19,28 +19,30 @@ auth.tenantId = process.env.NEXT_PUBLIC_FIREBASE_TENANT_ID || null
 const storage = getStorage(firebaseApp)
 
 class FirebaseAuthenticationError extends Error {
-  constructor(error: any) {
-    super(error.message)
+  constructor(error: unknown) {
+    super(typeof error === 'object' && error && 'message' in error ? (error.message as string) : 'Unknown error')
     this.name = new.target.name
     Object.setPrototypeOf(this, new.target.prototype)
 
-    // https://github.com/firebase/firebase-js-sdk/blob/master/packages/auth/src/error_auth.js
-    switch (error.code) {
-      case 'auth/email-already-in-use':
-        this.message = '入力されたメールアドレスはすでに使用されています。'
-        break
-      case 'auth/invalid-email':
-        this.message = '不正なメールアドレスです'
-        break
-      case 'auth/user-not-found':
-        this.message = 'ユーザーが見つかりませんでした'
-        break
-      case 'auth/wrong-password':
-        this.message = 'パスワードが一致しません'
-        break
-      default:
-        this.message = 'エラーが発生しました'
-        break
+    if (typeof error === 'object' && error && 'code' in error) {
+      // https://github.com/firebase/firebase-js-sdk/blob/master/packages/auth/src/error_auth.js
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+          this.message = '入力されたメールアドレスはすでに使用されています。'
+          break
+        case 'auth/invalid-email':
+          this.message = '不正なメールアドレスです'
+          break
+        case 'auth/user-not-found':
+          this.message = 'ユーザーが見つかりませんでした'
+          break
+        case 'auth/wrong-password':
+          this.message = 'パスワードが一致しません'
+          break
+        default:
+          this.message = 'エラーが発生しました'
+          break
+      }
     }
   }
 }
