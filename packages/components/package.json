@@ -10,30 +10,30 @@
     "build": "run-p -l build:*",
     "build:cjs": "tsc --project . --module commonjs --outDir ./cjs",
     "build:esm": "tsc --project . --module es2015 --outDir ./esm",
-    "clean": "rimraf esm cjs",
+    "clean": "rimraf esm cjs .turbo",
     "lint": "tsc -p . --noEmit",
-    "prebuild": "yarn clean",
+    "prebuild": "pnpm clean",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "next": "12.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "styled-components": "6.1.13"
   },
   "devDependencies": {
     "@babel/core": "7.25.2",
-    "@types/react": "18.2.48",
-    "@types/react-dom": "18.2.18",
-    "@types/styled-components": "5.1.34",
-    "babel-loader": "9.1.3",
-    "babel-plugin-styled-components": "2.1.4",
     "@storybook/addon-actions": "6.5.16",
     "@storybook/addon-essentials": "6.5.16",
     "@storybook/addon-interactions": "6.5.16",
     "@storybook/addon-links": "6.5.16",
     "@storybook/react": "6.5.16",
-    "@storybook/testing-library": "0.2.2"
+    "@storybook/testing-library": "0.2.2",
+    "@types/node": "16.18.108",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "@types/styled-components": "5.1.34",
+    "babel-loader": "9.1.3",
+    "babel-plugin-styled-components": "2.1.4"
   }
 }
