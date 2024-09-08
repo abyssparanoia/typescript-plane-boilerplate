@@ -28,8 +28,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "require-atomic-updates": "off",
     "no-console": "off",
-    "prettier/prettier": "warn",
-    "no-dupe-class-members": "off"
+    "prettier/prettier": "warn"
   },
   "settings": {
     "react": {
