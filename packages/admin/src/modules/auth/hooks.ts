@@ -15,9 +15,9 @@ const handleError = (error: unknown, setError?: Dispatch<SetStateAction<Error | 
   if (error instanceof Error) {
     setError?.(error)
     errorMessage += ` :${error.message}`
-    errorMessage
+    console.error(errorMessage)
   }
-  //   Toaster.error(errorMessage)
+  // Toaster.error(errorMessage)
 }
 
 export const useSignIn = () => {
