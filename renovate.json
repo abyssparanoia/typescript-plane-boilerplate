@@ -1,4 +1,6 @@
 {
-  "extends": ["config:base"],
-  "ignoreDeps": ["@date-io/date-fns", "react", "react-dom", "next"]
+  "labels": ["renovate"],
+  "extends": [
+    "config:base"
+  ]
 }
