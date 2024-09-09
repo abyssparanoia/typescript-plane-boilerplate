@@ -31,7 +31,8 @@
     "@types/express-openapi": "^1.9.0",
     "@types/node": "16.18.108",
     "@types/uuid": "^10.0.0",
-    "drizzle-kit": "^0.20.0"
+    "drizzle-kit": "^0.20.0",
+    "ts-node-dev": "^2.0.0"
   },
   "jest": {
     "moduleFileExtensions": [

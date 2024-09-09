@@ -13,11 +13,11 @@
 > docker-compose build
 
 # dotenvのコピー
-> cp packages/backend/.env.tmpl packages/backend/.env
+> cp apps/backend/.env.tmpl apps/backend/.env
 
-> yarn
+> pnpm install
 
-> yarn build
+> pnpm build
 ```
 
 ## サーバースタート
@@ -28,14 +28,14 @@
 > docker-compose up -d
 
 # nestjs serverの起動
-> yarn workspace @typescript-plane-boilerplate/backend start:dev
+> pnpm workspace @typescript-plane-boilerplate/backend start:dev
 
 # nextjs 管理画面起動
-> yarn workspace @typescript-plane-boilerplate/admin start:dev
+> pnpm workspace @typescript-plane-boilerplate/admin start:dev
 
 # erd更新
 > docker-compose up -d
 
 # erd起動
-> yarn workspace @typescript-plane-boilerplate/erd start
+> pnpm workspace @typescript-plane-boilerplate/erd start
 ```

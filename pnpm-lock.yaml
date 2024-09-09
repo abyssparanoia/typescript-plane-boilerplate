@@ -102,9 +102,7 @@ importers:
         specifier: 6.0.1
         version: 6.0.1
 
-  apps/erd: {}
-
-  packages/admin:
+  apps/admin:
     dependencies:
       '@faker-js/faker':
         specifier: 5.5.3
@@ -114,7 +112,7 @@ importers:
         version: 3.2.0(react@18.3.1)
       '@typescript-plane-boilerplate/firebase-client':
         specifier: workspace:*
-        version: link:../firebase-client
+        version: link:../../packages/firebase-client
       axios:
         specifier: 1.6.2
         version: 1.6.2
@@ -201,7 +199,7 @@ importers:
         specifier: 3.7.2
         version: 3.7.2(typescript@5.5.4)
 
-  packages/backend:
+  apps/backend:
     dependencies:
       '@paralleldrive/cuid2':
         specifier: 2.2.2
@@ -249,6 +247,11 @@ importers:
       drizzle-kit:
         specifier: ^0.20.0
         version: 0.20.18
+      ts-node-dev:
+        specifier: ^2.0.0
+        version: 2.0.0(@types/node@16.18.108)(typescript@5.5.4)
+
+  apps/erd: {}
 
   packages/components:
     dependencies:
@@ -2701,6 +2704,12 @@ packages:
   '@types/stack-utils@2.0.3':
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
 
+  '@types/strip-bom@3.0.0':
+    resolution: {integrity: sha512-xevGOReSYGM7g/kUBZzPqCrR/KYAo+F0yiPc85WFTJa0MSLtyFTVTU6cJu/aV4mid7IffDIWqo69THF2o4JiEQ==}
+
+  '@types/strip-json-comments@0.0.30':
+    resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
+
   '@types/styled-components@5.1.34':
     resolution: {integrity: sha512-mmiVvwpYklFIv9E8qfxuPyIt/OuyIrn6gMOAMOFUO3WJfSrSE+sGUoa4PiZj77Ut7bKZpaa6o1fBKS/4TOEvnA==}
 
@@ -4337,6 +4346,9 @@ packages:
 
   duplexify@4.1.3:
     resolution: {integrity: sha512-M3BmBhwJRZsSx38lZyhE53Csddgzl5R7xGJNk7CVddZD6CcmwMCH8J+7AprIrQKH7TonKxaCjcv27Qmf+sQ+oA==}
+
+  dynamic-dedupe@0.3.0:
+    resolution: {integrity: sha512-ssuANeD+z97meYOqd50e04Ze5qp4bPqo8cCkI4TRjZkzAUgIDTrXV1R8QCdINpiI+hw14+rYazvTRdQrz0/rFQ==}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -8380,6 +8392,17 @@ packages:
   ts-log@2.2.5:
     resolution: {integrity: sha512-PGcnJoTBnVGy6yYNFxWVNkdcAuAMstvutN9MgDJIV6L0oG8fB+ZNNy1T+wJzah8RPGor1mZuPQkVfXNDpy9eHA==}
 
+  ts-node-dev@2.0.0:
+    resolution: {integrity: sha512-ywMrhCfH6M75yftYvrvNarLEY+SUXtUvU8/0Z6llrHQVBx12GiFk5sStF8UdfE/yfzk9IAq7O5EEbTQsxlBI8w==}
+    engines: {node: '>=0.8.0'}
+    hasBin: true
+    peerDependencies:
+      node-notifier: '*'
+      typescript: '*'
+    peerDependenciesMeta:
+      node-notifier:
+        optional: true
+
   ts-node@10.9.1:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
@@ -8405,6 +8428,9 @@ packages:
 
   tsconfig-paths@4.0.0:
     resolution: {integrity: sha512-SLBg2GBKlR6bVtMgJJlud/o3waplKtL7skmLkExomIiaAtLGtVsoXIqP3SYdjbcH9lq/KVv7pMZeCBpLYOit6Q==}
+
+  tsconfig@7.0.0:
+    resolution: {integrity: sha512-vZXmzPrL+EmC4T/4rVlT2jNVMWCi/O4DIiSj3UHg1OE5kCKbk4mfrXc6dZksLgRM/TZlKnousKH9bbTazUWRRw==}
 
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
@@ -11639,7 +11665,7 @@ snapshots:
       '@storybook/core-events': 6.5.16
       core-js: 3.33.3
       global: 4.4.0
-      qs: 6.11.0
+      qs: 6.13.0
       telejson: 6.0.8
 
   '@storybook/channel-websocket@6.5.16':
@@ -11672,7 +11698,7 @@ snapshots:
       global: 4.4.0
       lodash: 4.17.21
       memoizerific: 1.11.3
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -11693,7 +11719,7 @@ snapshots:
       '@storybook/theming': 6.5.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       core-js: 3.33.3
       memoizerific: 1.11.3
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -11716,7 +11742,7 @@ snapshots:
       core-js: 3.33.3
       global: 4.4.0
       lodash: 4.17.21
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -11744,7 +11770,7 @@ snapshots:
       core-js: 3.33.3
       global: 4.4.0
       lodash: 4.17.21
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -12045,7 +12071,7 @@ snapshots:
       core-js: 3.33.3
       global: 4.4.0
       lodash: 4.17.21
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -12137,7 +12163,7 @@ snapshots:
       '@storybook/client-logger': 6.5.16
       core-js: 3.33.3
       memoizerific: 1.11.3
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -12235,7 +12261,7 @@ snapshots:
       '@storybook/theming': 6.5.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       core-js: 3.33.3
       memoizerific: 1.11.3
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -12483,6 +12509,10 @@ snapshots:
   '@types/source-list-map@0.1.6': {}
 
   '@types/stack-utils@2.0.3': {}
+
+  '@types/strip-bom@3.0.0': {}
+
+  '@types/strip-json-comments@0.0.30': {}
 
   '@types/styled-components@5.1.34':
     dependencies:
@@ -14498,6 +14528,10 @@ snapshots:
       readable-stream: 3.6.2
       stream-shift: 1.0.3
     optional: true
+
+  dynamic-dedupe@0.3.0:
+    dependencies:
+      xtend: 4.0.2
 
   eastasianwidth@0.2.0: {}
 
@@ -19519,6 +19553,24 @@ snapshots:
 
   ts-log@2.2.5: {}
 
+  ts-node-dev@2.0.0(@types/node@16.18.108)(typescript@5.5.4):
+    dependencies:
+      chokidar: 3.6.0
+      dynamic-dedupe: 0.3.0
+      minimist: 1.2.8
+      mkdirp: 1.0.4
+      resolve: 1.22.8
+      rimraf: 2.7.1
+      source-map-support: 0.5.21
+      tree-kill: 1.2.2
+      ts-node: 10.9.1(@types/node@16.18.108)(typescript@5.5.4)
+      tsconfig: 7.0.0
+      typescript: 5.5.4
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+
   ts-node@10.9.1(@types/node@16.18.108)(typescript@5.5.4):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
@@ -19546,6 +19598,13 @@ snapshots:
       json5: 2.2.3
       minimist: 1.2.8
       strip-bom: 3.0.0
+
+  tsconfig@7.0.0:
+    dependencies:
+      '@types/strip-bom': 3.0.0
+      '@types/strip-json-comments': 0.0.30
+      strip-bom: 3.0.0
+      strip-json-comments: 2.0.1
 
   tslib@1.14.1: {}
 
