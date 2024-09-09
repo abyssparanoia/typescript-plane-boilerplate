@@ -28,7 +28,7 @@ jobs:
 
       - name: prepare file
         run: |
-          cp packages/admin/.env.tmpl packages/admin/.env
+          cp apps/admin/.env.tmpl apps/admin/.env
 
       - name: install deps
         run: pnpm install
