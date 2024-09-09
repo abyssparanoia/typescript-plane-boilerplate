@@ -102,9 +102,7 @@ importers:
         specifier: 6.0.1
         version: 6.0.1
 
-  apps/erd: {}
-
-  packages/admin:
+  apps/admin:
     dependencies:
       '@faker-js/faker':
         specifier: 5.5.3
@@ -114,7 +112,7 @@ importers:
         version: 3.2.0(react@18.3.1)
       '@typescript-plane-boilerplate/firebase-client':
         specifier: workspace:*
-        version: link:../firebase-client
+        version: link:../../packages/firebase-client
       axios:
         specifier: 1.6.2
         version: 1.6.2
@@ -200,6 +198,8 @@ importers:
       react-docgen-typescript-loader:
         specifier: 3.7.2
         version: 3.7.2(typescript@5.5.4)
+
+  apps/erd: {}
 
   packages/backend:
     dependencies:
@@ -11639,7 +11639,7 @@ snapshots:
       '@storybook/core-events': 6.5.16
       core-js: 3.33.3
       global: 4.4.0
-      qs: 6.11.0
+      qs: 6.13.0
       telejson: 6.0.8
 
   '@storybook/channel-websocket@6.5.16':
@@ -11672,7 +11672,7 @@ snapshots:
       global: 4.4.0
       lodash: 4.17.21
       memoizerific: 1.11.3
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -11693,7 +11693,7 @@ snapshots:
       '@storybook/theming': 6.5.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       core-js: 3.33.3
       memoizerific: 1.11.3
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -11716,7 +11716,7 @@ snapshots:
       core-js: 3.33.3
       global: 4.4.0
       lodash: 4.17.21
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -11744,7 +11744,7 @@ snapshots:
       core-js: 3.33.3
       global: 4.4.0
       lodash: 4.17.21
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -12045,7 +12045,7 @@ snapshots:
       core-js: 3.33.3
       global: 4.4.0
       lodash: 4.17.21
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -12137,7 +12137,7 @@ snapshots:
       '@storybook/client-logger': 6.5.16
       core-js: 3.33.3
       memoizerific: 1.11.3
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
@@ -12235,7 +12235,7 @@ snapshots:
       '@storybook/theming': 6.5.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       core-js: 3.33.3
       memoizerific: 1.11.3
-      qs: 6.11.0
+      qs: 6.13.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       regenerator-runtime: 0.13.11
