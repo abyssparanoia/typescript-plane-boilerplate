@@ -61,7 +61,7 @@
       "git add"
     ]
   },
-  "packageManager": "pnpm@9.6.0",
+  "packageManager": "pnpm@9.10.0",
   "engines": {
     "node": "20",
     "npm": "use pnpm please!",
