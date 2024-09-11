@@ -21,8 +21,8 @@ importers:
         specifier: 20.16.5
         version: 20.16.5
       '@types/supertest':
-        specifier: 2.0.12
-        version: 2.0.12
+        specifier: 2.0.16
+        version: 2.0.16
       '@typescript-eslint/eslint-plugin':
         specifier: 5.31.0
         version: 5.31.0(@typescript-eslint/parser@5.31.0(eslint@9.10.0)(typescript@5.5.4))(eslint@9.10.0)(typescript@5.5.4)
@@ -2713,8 +2713,8 @@ packages:
   '@types/superagent@8.1.9':
     resolution: {integrity: sha512-pTVjI73witn+9ILmoJdajHGW2jkSaOzhiFYF1Rd3EQ94kymLqB9PjD9ISg7WaALC7+dCHT0FGe9T2LktLq/3GQ==}
 
-  '@types/supertest@2.0.12':
-    resolution: {integrity: sha512-X3HPWTwXRerBZS7Mo1k6vMVR1Z6zmJcDVn5O/31whe0tnjE4te6ZJSJGq1RiqHPjzPdMTfjCFogDJmwng9xHaQ==}
+  '@types/supertest@2.0.16':
+    resolution: {integrity: sha512-6c2ogktZ06tr2ENoZivgm7YnprnhYE4ZoXGMY+oA7IuAf17M8FWvujXZGmxLv8y0PTyts4x5A+erSwVUFA8XSg==}
 
   '@types/tapable@1.0.12':
     resolution: {integrity: sha512-bTHG8fcxEqv1M9+TD14P8ok8hjxoOCkfKc8XXLaaD05kI7ohpeI956jtDOD3XHKBQrlyPughUtzm1jtVhHpA5Q==}
@@ -12488,7 +12488,7 @@ snapshots:
       '@types/node': 20.16.5
       form-data: 4.0.0
 
-  '@types/supertest@2.0.12':
+  '@types/supertest@2.0.16':
     dependencies:
       '@types/superagent': 8.1.9
 
