@@ -1,17 +1,17 @@
 {
-  "name": "@typescript-plane-boilerplate/backend",
+  "name": "backend",
   "version": "0.0.1",
   "private": true,
   "description": "",
   "author": "",
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "start:dev": "ts-node-dev src/cmd/bootstrap.ts run-http-server",
-    "start:prod": "NODE_ENV=production node dist/src/cmd/bootstrap.js run-http-server",
+    "build": "tsup",
+    "start:dev": "dotenv tsup --watch --onSuccess 'node dist/index.js run-http-server'",
+    "start:prod": "NODE_ENV=production node dist/index.js run-http-server",
     "migration:generate": "drizzle-kit generate:mysql",
-    "migration:run:dev": "ts-node src/cmd/bootstrap.ts migrate.up",
-    "migration:run:prod": "NODE_ENV=production node dist/src/cmd/bootstrap.js migrate.up",
+    "migration:run:dev": "ts-node index.ts migrate.up",
+    "migration:run:prod": "NODE_ENV=production node dist/index.js migrate.up",
     "generate:openapi": "openapi-generator-cli generate -i ./openapi/api.yaml -g typescript-node -o ./src/infrastructure/http/server/generated --global-property models"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "@types/express-openapi": "^1.9.0",
     "@types/node": "20.16.5",
     "@types/uuid": "^10.0.0",
+    "dotenv-cli": "^7.4.2",
     "drizzle-kit": "^0.24.0",
     "ts-node-dev": "^2.0.0"
   },
