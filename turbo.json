@@ -5,11 +5,10 @@
       "dependsOn": ["^build"]
     },
     "clean": {
-      "dependsOn": ["^clean"]
+      "cache": false
     },
     "start:dev": {
-      "cache": false,
-      "persistent": true
+      "cache": false
     }
   }
 }
