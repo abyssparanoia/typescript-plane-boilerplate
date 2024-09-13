@@ -2,7 +2,7 @@ import cac from 'cac'
 import { runHttpServer } from '../infrastructure/http/run'
 import { runMigrate } from '../infrastructure/mysql/client'
 
-const cli = cac()
+export const cli = cac()
 
 cli.command('run-http-server').action(() => {
   runHttpServer()
