@@ -3,12 +3,8 @@ name: CI
 on: [pull_request]
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -17,27 +13,46 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
           cache: 'pnpm'
 
       - name: Launch Turbo Remote Cache Server
         uses: dtinth/setup-github-actions-caching-for-turbo@v1
 
-      - name: prepare file
-        run: |
-          cp apps/admin/.env.tmpl apps/admin/.env
+      - name: Prepare Environment
+        run: cp apps/admin/.env.tmpl apps/admin/.env
 
-      - name: install deps
+  install:
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      - name: Install Dependencies
         run: pnpm install
 
-      - name: lint
+  lint:
+    runs-on: ubuntu-latest
+    needs: install
+
+    steps:
+      - name: Run Linting
         run: pnpm lint:check
 
-      - name: format:check
+  format:
+    runs-on: ubuntu-latest
+    needs: lint
+
+    steps:
+      - name: Run Formatting
         run: pnpm format:check
 
-      - name: build
+  build:
+    runs-on: ubuntu-latest
+    needs: format
+
+    steps:
+      - name: Build Project
         run: pnpm build
