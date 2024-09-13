@@ -21,6 +21,10 @@ jobs:
 
       - name: Launch Turbo Remote Cache Server
         uses: dtinth/setup-github-actions-caching-for-turbo@v1
+        with:
+          cache-path: |
+            .pnpm-store
+            node_modules
 
       - name: Prepare Environment
         run: cp apps/admin/.env.tmpl apps/admin/.env
