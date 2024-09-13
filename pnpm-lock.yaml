@@ -36,8 +36,8 @@ importers:
         specifier: workspace:*
         version: link:packages/tsconfig
       concurrently:
-        specifier: 7.6.0
-        version: 7.6.0
+        specifier: 9.0.1
+        version: 9.0.1
       eslint:
         specifier: 9.10.0
         version: 9.10.0
@@ -4026,9 +4026,9 @@ packages:
     engines: {node: '>=10.0.0'}
     hasBin: true
 
-  concurrently@7.6.0:
-    resolution: {integrity: sha512-BKtRgvcJGeZ4XttiDiNcFiRlxoAeZOseqUvyYRUp/Vtd+9p1ULmeoSqGsDA+2ivdeDFpqrJvGvmI+StKfKl5hw==}
-    engines: {node: ^12.20.0 || ^14.13.0 || >=16.0.0}
+  concurrently@9.0.1:
+    resolution: {integrity: sha512-wYKvCd/f54sTXJMSfV6Ln/B8UrfLBKOYa+lzc6CHay3Qek+LorVSBdMVfyewFhRbH0Rbabsk4D+3PL/VjQ5gzg==}
+    engines: {node: '>=18'}
     hasBin: true
 
   consola@2.15.3:
@@ -11919,7 +11919,7 @@ snapshots:
       case-sensitive-paths-webpack-plugin: 2.4.0
       core-js: 3.38.1
       css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.17.19))
       find-up: 5.0.0
       fork-ts-checker-webpack-plugin: 4.1.6(eslint@9.10.0)(typescript@5.6.2)(webpack@4.47.0)
       glob: 7.2.3
@@ -14339,14 +14339,12 @@ snapshots:
       tree-kill: 1.2.2
       yargs: 16.2.0
 
-  concurrently@7.6.0:
+  concurrently@9.0.1:
     dependencies:
       chalk: 4.1.2
-      date-fns: 2.30.0
       lodash: 4.17.21
       rxjs: 7.8.1
       shell-quote: 1.8.1
-      spawn-command: 0.0.2
       supports-color: 8.1.1
       tree-kill: 1.2.2
       yargs: 17.7.2
@@ -15527,6 +15525,12 @@ snapshots:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
       webpack: 4.47.0
+
+  file-loader@6.2.0(webpack@5.94.0(esbuild@0.17.19)):
+    dependencies:
+      loader-utils: 2.0.4
+      schema-utils: 3.3.0
+      webpack: 5.94.0(esbuild@0.17.19)
 
   file-system-cache@1.1.0:
     dependencies:
@@ -20251,7 +20255,7 @@ snapshots:
       schema-utils: 3.3.0
       webpack: 4.47.0
     optionalDependencies:
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.17.19))
 
   url@0.11.4:
     dependencies:
