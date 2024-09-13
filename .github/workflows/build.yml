@@ -35,6 +35,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     needs: setup
+    strategy:
+      matrix:
+        node-version: [20.x]
     steps:
       - name: Run Linting
         run: pnpm lint:check
@@ -42,6 +45,9 @@ jobs:
   format:
     runs-on: ubuntu-latest
     needs: setup
+    strategy:
+      matrix:
+        node-version: [20.x]
     steps:
       - name: Run Formatting
         run: pnpm format:check
@@ -49,6 +55,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: setup
+    strategy:
+      matrix:
+        node-version: [20.x]
     steps:
       - name: Build Project
         run: pnpm build
