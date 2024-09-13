@@ -6,6 +6,10 @@ jobs:
   setup:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [20.x]
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -13,18 +17,14 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
-      - name: Use Node.js
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
       - name: Launch Turbo Remote Cache Server
         uses: dtinth/setup-github-actions-caching-for-turbo@v1
-        with:
-          cache-path: |
-            .pnpm-store
-            node_modules
 
       - name: Prepare Environment
         run: cp apps/admin/.env.tmpl apps/admin/.env
