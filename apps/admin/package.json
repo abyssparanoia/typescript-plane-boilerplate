@@ -1,13 +1,12 @@
 {
-  "name": "@typescript-plane-boilerplate/admin",
+  "name": "admin",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start:dev": "next dev -p 3000",
     "start:prod": "next start -p 3000",
-    "build": "run-p -l build:*",
-    "build:next": "next build",
+    "build": "next build",
     "clean": "rimraf dist node_modules turbo-build.log",
     "storybook": "start-storybook -p 6006"
   },
