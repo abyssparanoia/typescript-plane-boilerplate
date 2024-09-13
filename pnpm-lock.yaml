@@ -226,8 +226,8 @@ importers:
         specifier: 9.0.1
         version: 9.0.1
       winston:
-        specifier: 3.11.0
-        version: 3.11.0
+        specifier: 3.14.2
+        version: 3.14.2
     devDependencies:
       '@openapitools/openapi-generator-cli':
         specifier: ^2.7.0
@@ -8897,8 +8897,8 @@ packages:
     resolution: {integrity: sha512-wQCXXVgfv/wUPOfb2x0ruxzwkcZfxcktz6JIMUaPLmcNhO4bZTwA/WtDWK74xV3F2dKu8YadrFv0qhwYjVEwhA==}
     engines: {node: '>= 12.0.0'}
 
-  winston@3.11.0:
-    resolution: {integrity: sha512-L3yR6/MzZAOl0DsysUXHVjOwv8mKZ71TrA/41EIduGpOOV5LQVodqN+QdQ6BS6PJ/RdIshZhq84P/fStEZkk7g==}
+  winston@3.14.2:
+    resolution: {integrity: sha512-CO8cdpBB2yqzEf8v895L+GNKYJiEq8eKlHU38af3snQBQ+sdAIUepjMSguOIJC7ICbzm0ZI+Af2If4vIJrtmOg==}
     engines: {node: '>= 12.0.0'}
 
   word-wrap@1.2.5:
@@ -20100,7 +20100,7 @@ snapshots:
       readable-stream: 3.6.2
       triple-beam: 1.4.1
 
-  winston@3.11.0:
+  winston@3.14.2:
     dependencies:
       '@colors/colors': 1.6.0
       '@dabh/diagnostics': 2.0.3
