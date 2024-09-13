@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "build": "turbo run build --cache-dir=.turbo --no-daemon && exit 0",
-    "dev": "turbo run start:dev",
+    "dev": "turbo run dev",
+    "start:dev:admin": "turbo run start:dev --filter=admin... --concurrency=100",
+    "start:dev:backend": "turbo run start:dev --filter=backend... --concurrency=100",
     "lint:check": "eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "eslint --fix \"**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"**/*.{mjs,js,jsx,ts,tsx,json}\"",
@@ -13,6 +15,7 @@
     "clean": "turbo run clean && rimraf node_modules"
   },
   "devDependencies": {
+    "@typescript-plane-boilerplate/tsconfig": "workspace:*",
     "@eslint/js": "^9.10.0",
     "@types/eslint": "^9.6.1",
     "@types/jest": "28.1.8",
@@ -43,7 +46,8 @@
     "turbo": "2.1.1",
     "typescript": "5.6.2",
     "typescript-eslint": "^8.4.0",
-    "wait-on": "6.0.1"
+    "wait-on": "6.0.1",
+    "tsup": "6.7.0"
   },
   "private": true,
   "workspaces": [
