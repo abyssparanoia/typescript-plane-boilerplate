@@ -2,18 +2,28 @@
   "name": "@typescript-plane-boilerplate/firebase-client",
   "version": "1.0.0",
   "private": true,
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "typings": "esm/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "run-p -l build:*",
-    "build:cjs": "tsc --project . --module commonjs --outDir ./cjs",
-    "build:esm": "tsc --project . --module es2015 --outDir ./esm",
-    "prebuild": "pnpm run clean",
-    "clean": "rimraf esm cjs .turbo",
+    "build": "rimraf dist && tsup",
+    "start:dev": "tsup --watch",
+    "clean": "rimraf .turbo node_modules dist",
     "lint": "tsc -p . --noEmit"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "dependencies": {
     "firebase": "10.7.1"
-  }
+  },
+  "devDependencies": {}
 }
