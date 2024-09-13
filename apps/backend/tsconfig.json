@@ -1,4 +1,7 @@
 {
+  "extends": "@typescript-plane-boilerplate/tsconfig/base",
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
   "compilerOptions": {
     "declaration": true,
     "allowSyntheticDefaultImports": true,
@@ -21,7 +24,5 @@
     "strictNullChecks": true,
     "target": "esnext",
     "types": ["jest", "node"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  }
 }
