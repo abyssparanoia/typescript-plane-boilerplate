@@ -162,8 +162,8 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
       react-google-button:
-        specifier: 0.7.2
-        version: 0.7.2(react@18.3.1)
+        specifier: 0.8.0
+        version: 0.8.0(react@18.3.1)
       recoil:
         specifier: 0.7.7
         version: 0.7.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -7572,10 +7572,10 @@ packages:
       react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1
       react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1
 
-  react-google-button@0.7.2:
-    resolution: {integrity: sha512-LPIqU2hIlc212kqks8MtKjRstquVkP3SIjxlK5B1nIfg2R7YqSusJAxZUkJA5dv/z6QeSuGyI9ujwV/VWMTyAA==}
+  react-google-button@0.8.0:
+    resolution: {integrity: sha512-0u6mbDcTUmWzgXsld8FJpbrXP+zDsNQVYPIt225aBqwgJ/CdrDiep1PZOpnyntyjsejWG0TtQr6uZB4eIaXlJQ==}
     peerDependencies:
-      react: '*'
+      react: '>= 16.8.0'
 
   react-inspector@5.1.1:
     resolution: {integrity: sha512-GURDaYzoLbW8pMGXwYPDBIv6nqei4kK7LPRZ9q9HCZF54wqXz/dnylBp/kfE9XmekBhHvLDdcYeyIwSrvtOiWg==}
@@ -18740,7 +18740,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-is: 17.0.2
 
-  react-google-button@0.7.2(react@18.3.1):
+  react-google-button@0.8.0(react@18.3.1):
     dependencies:
       prop-types: 15.8.1
       react: 18.3.1
