@@ -105,8 +105,8 @@ importers:
         specifier: 8.5.0
         version: 8.5.0(eslint@9.10.0)(typescript@5.6.2)
       wait-on:
-        specifier: 6.0.1
-        version: 6.0.1
+        specifier: 8.0.1
+        version: 8.0.1
 
   apps/admin:
     dependencies:
@@ -3554,9 +3554,6 @@ packages:
   aws-ssl-profiles@1.1.2:
     resolution: {integrity: sha512-NZKeq9AfyQvEeNlN0zSYAaWrmBffJh3IELMZfRpJVWgrpEbtEpnjvzqBPf+mxoI287JohRDoa+/nsfqqiZmF6g==}
     engines: {node: '>= 6.0.0'}
-
-  axios@0.25.0:
-    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
 
   axios@1.7.4:
     resolution: {integrity: sha512-DukmaFRnY6AzAALSH4J2M3k6PkaC+MfaAGdEERRWcC9q3/TWQwLpHR8ZRLKTdQ3aBDL64EdluRDjJqKw+BPZEw==}
@@ -9134,9 +9131,9 @@ packages:
   vm-browserify@1.1.2:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
 
-  wait-on@6.0.1:
-    resolution: {integrity: sha512-zht+KASY3usTY5u2LgaNqn/Cd8MukxLGjdcZxT2ns5QzDmTFc4XoWBgC+C/na+sMRZTuVygQoMYwdcVjHnYIVw==}
-    engines: {node: '>=10.0.0'}
+  wait-on@8.0.1:
+    resolution: {integrity: sha512-1wWQOyR2LVVtaqrcIL2+OM+x7bkpmzVROa0Nf6FryXkS+er5Sa1kzFGjzZRqLnHa3n1rACFLeTwUqE1ETL9Mig==}
+    engines: {node: '>=12.0.0'}
     hasBin: true
 
   walker@1.0.8:
@@ -12125,7 +12122,7 @@ snapshots:
       case-sensitive-paths-webpack-plugin: 2.4.0
       core-js: 3.38.1
       css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.23.1))
+      file-loader: 6.2.0(webpack@4.47.0)
       find-up: 5.0.0
       fork-ts-checker-webpack-plugin: 4.1.6(eslint@9.10.0)(typescript@5.6.2)(webpack@4.47.0)
       glob: 7.2.3
@@ -12501,7 +12498,7 @@ snapshots:
       core-js: 3.38.1
       css-loader: 3.6.0(webpack@4.47.0)
       express: 4.21.0
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.23.1))
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
@@ -13773,12 +13770,6 @@ snapshots:
       possible-typed-array-names: 1.0.0
 
   aws-ssl-profiles@1.1.2: {}
-
-  axios@0.25.0:
-    dependencies:
-      follow-redirects: 1.15.9
-    transitivePeerDependencies:
-      - debug
 
   axios@1.7.4:
     dependencies:
@@ -20562,9 +20553,9 @@ snapshots:
 
   vm-browserify@1.1.2: {}
 
-  wait-on@6.0.1:
+  wait-on@8.0.1:
     dependencies:
-      axios: 0.25.0
+      axios: 1.7.7
       joi: 17.13.3
       lodash: 4.17.21
       minimist: 1.2.8
