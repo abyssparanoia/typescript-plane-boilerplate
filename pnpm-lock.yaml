@@ -111,8 +111,8 @@ importers:
   apps/admin:
     dependencies:
       '@faker-js/faker':
-        specifier: 5.5.3
-        version: 5.5.3
+        specifier: 9.0.1
+        version: 9.0.1
       '@quentin-sommer/react-useragent':
         specifier: 3.2.0
         version: 3.2.0(react@18.3.1)
@@ -1595,8 +1595,9 @@ packages:
     resolution: {integrity: sha512-autAXT203ixhqei9xt+qkYOvY8l6LAFIdT2UXc/RPNeUVfqRF1BV94GTJyVPFKT8nFM6MyVJhjLj9E8JWvf5zQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@faker-js/faker@5.5.3':
-    resolution: {integrity: sha512-R11tGE6yIFwqpaIqcfkcg7AICXzFg14+5h5v0TfF/9+RMDL6jhzCy/pxHVOfbALGdtVYdt6JdR21tuxEgl34dw==}
+  '@faker-js/faker@9.0.1':
+    resolution: {integrity: sha512-4mDeYIgM3By7X6t5E6eYwLAa+2h4DeZDF7thhzIg6XB76jeEvMwadYAMCFJL/R4AnEBcAUO9+gL0vhy3s+qvZA==}
+    engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
   '@fastify/busboy@1.2.1':
     resolution: {integrity: sha512-7PQA7EH43S0CxcOa9OeAnaeA0oQ+e/DHNPZwSQM9CQHW76jle5+OvLdibRp/Aafs9KXbLhxyjOTkRjWUbQEd3Q==}
@@ -10824,7 +10825,7 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@faker-js/faker@5.5.3': {}
+  '@faker-js/faker@9.0.1': {}
 
   '@fastify/busboy@1.2.1':
     dependencies:
