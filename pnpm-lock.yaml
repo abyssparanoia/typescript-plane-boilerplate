@@ -229,8 +229,8 @@ importers:
         specifier: 3.11.3
         version: 3.11.3
       uuid:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 10.0.0
+        version: 10.0.0
       winston:
         specifier: 3.14.2
         version: 3.14.2
@@ -9114,6 +9114,10 @@ packages:
     resolution: {integrity: sha512-dsNgbLaTrd6l3MMxTtouOCFw4CBFc/3a+GgYA2YyrJvyQ1u6q4pcu3ktLoUZ/VN/Aw9WsauazbgsgdfVWgAKQg==}
     deprecated: Package no longer supported and required. Use the uuid package or crypto.randomUUID instead
 
+  uuid@10.0.0:
+    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    hasBin: true
+
   uuid@3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
     deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
@@ -12144,7 +12148,7 @@ snapshots:
       case-sensitive-paths-webpack-plugin: 2.4.0
       core-js: 3.38.1
       css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.23.1))
       find-up: 5.0.0
       fork-ts-checker-webpack-plugin: 4.1.6(eslint@9.10.0)(typescript@5.6.2)(webpack@4.47.0)
       glob: 7.2.3
@@ -12520,7 +12524,7 @@ snapshots:
       core-js: 3.38.1
       css-loader: 3.6.0(webpack@4.47.0)
       express: 4.21.0
-      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.23.1))
+      file-loader: 6.2.0(webpack@4.47.0)
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
@@ -20573,6 +20577,8 @@ snapshots:
   utils-merge@1.0.1: {}
 
   uuid-browser@3.1.0: {}
+
+  uuid@10.0.0: {}
 
   uuid@3.4.0: {}
 
