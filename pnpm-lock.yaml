@@ -229,8 +229,8 @@ importers:
         specifier: 3.11.3
         version: 3.11.3
       uuid:
-        specifier: 9.0.1
-        version: 9.0.1
+        specifier: 10.0.0
+        version: 10.0.0
       winston:
         specifier: 3.14.2
         version: 3.14.2
