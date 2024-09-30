@@ -23,7 +23,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "firebase": "10.13.2"
+    "firebase": "10.14.0"
   },
   "devDependencies": {}
 }
