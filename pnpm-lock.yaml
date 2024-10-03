@@ -236,8 +236,8 @@ importers:
         version: 3.14.2
     devDependencies:
       '@openapitools/openapi-generator-cli':
-        specifier: 2.13.12
-        version: 2.13.12
+        specifier: 2.13.13
+        version: 2.13.13
       '@types/express':
         specifier: 5.0.0
         version: 5.0.0
@@ -2200,9 +2200,9 @@ packages:
     engines: {node: '>=8.0.0', npm: '>=5.0.0'}
     hasBin: true
 
-  '@openapitools/openapi-generator-cli@2.13.12':
-    resolution: {integrity: sha512-ieYnbFiSYAEXmmLea+BLh50kMCnUxUoMfElKvFNFPkK8xDCFIzdsa5OVfR/gUKJRuWz/znbEF+zIY3rXlBT+3Q==}
-    engines: {node: '>=10.0.0'}
+  '@openapitools/openapi-generator-cli@2.13.13':
+    resolution: {integrity: sha512-uioqbxB6TfiLoOEE3T8kqTn/ffaRzOwS3ATMQnoMvh2lwADKMT6bDLfE3YO3XTEj+HflXcsLXQGK6PLiqa8Mmw==}
+    engines: {node: '>=16'}
     hasBin: true
 
   '@opentelemetry/api@1.9.0':
@@ -5423,6 +5423,10 @@ packages:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
     deprecated: Glob versions prior to v9 are no longer supported
 
+  glob@9.3.5:
+    resolution: {integrity: sha512-e1LleDykUz2Iu+MTYdkSsuWX8lvAjAcs0Xef0lNIu0S2wOAzuTxCJtcd9S3cijlwYF18EsU3rzb8jPVobxDh9Q==}
+    engines: {node: '>=16 || 14 >=14.17'}
+
   global@4.4.0:
     resolution: {integrity: sha512-wv/LAoHdRE3BeTGz53FAamhGlPLhlssK45usmGFThIi4XqnBmjKQ16u+RNbP7WvigRZDxUsM0J3gcQ5yicaL0w==}
 
@@ -6764,6 +6768,10 @@ packages:
     resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
     engines: {node: '>=10'}
 
+  minimatch@8.0.4:
+    resolution: {integrity: sha512-W0Wvr9HyFXZRGIDgCicunpQ299OKXs9RgZfaukz4qAW/pJhcpUfupc9c+OObPOFueNy8VSrZgEmDtk6Kh4WzDA==}
+    engines: {node: '>=16 || 14 >=14.17'}
+
   minimatch@9.0.5:
     resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -6785,6 +6793,10 @@ packages:
 
   minipass@3.3.6:
     resolution: {integrity: sha512-DxiNidxSEK+tHG6zOIklvNOwm3hvCrbUrdtzY74U6HKTJxvIDfOUL5W5P2Ghd3DTkhhKPYGqeNUIh5qcM4YBfw==}
+    engines: {node: '>=8'}
+
+  minipass@4.2.8:
+    resolution: {integrity: sha512-fNzuVyifolSLFL4NzpF+wEF4qrgqaaKX0haXPQEdQ7NKAN+WecoKMHV09YcuL/DHxrUsYQOK3MiuDf7Ip2OXfQ==}
     engines: {node: '>=8'}
 
   minipass@5.0.0:
@@ -11625,7 +11637,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@openapitools/openapi-generator-cli@2.13.12':
+  '@openapitools/openapi-generator-cli@2.13.13':
     dependencies:
       '@nestjs/axios': 3.0.3(@nestjs/common@10.4.3(reflect-metadata@0.1.13)(rxjs@7.8.1))(axios@1.7.7)(rxjs@7.8.1)
       '@nestjs/common': 10.4.3(reflect-metadata@0.1.13)(rxjs@7.8.1)
@@ -11638,7 +11650,7 @@ snapshots:
       concurrently: 6.5.1
       console.table: 0.10.0
       fs-extra: 10.1.0
-      glob: 7.2.3
+      glob: 9.3.5
       https-proxy-agent: 7.0.5
       inquirer: 8.2.6
       lodash: 4.17.21
@@ -16090,6 +16102,13 @@ snapshots:
       once: 1.4.0
       path-is-absolute: 1.0.1
 
+  glob@9.3.5:
+    dependencies:
+      fs.realpath: 1.0.0
+      minimatch: 8.0.4
+      minipass: 4.2.8
+      path-scurry: 1.11.1
+
   global@4.4.0:
     dependencies:
       min-document: 2.19.0
@@ -17726,6 +17745,10 @@ snapshots:
     dependencies:
       brace-expansion: 2.0.1
 
+  minimatch@8.0.4:
+    dependencies:
+      brace-expansion: 2.0.1
+
   minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
@@ -17747,6 +17770,8 @@ snapshots:
   minipass@3.3.6:
     dependencies:
       yallist: 4.0.0
+
+  minipass@4.2.8: {}
 
   minipass@5.0.0: {}
 
