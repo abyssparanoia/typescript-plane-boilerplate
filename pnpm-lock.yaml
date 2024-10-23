@@ -242,8 +242,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0
       '@types/express-openapi':
-        specifier: 1.9.0
-        version: 1.9.0
+        specifier: 1.9.2
+        version: 1.9.2
       '@types/node':
         specifier: 20.16.14
         version: 20.16.14
@@ -2870,8 +2870,8 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
-  '@types/express-openapi@1.9.0':
-    resolution: {integrity: sha512-eP5Fy/qBRNQhwiFKvSOgfOECN9Z6OK1UiTyY0ld2o0Ah7wlOwtx7Z11LJZ55l8xfMqDSNM4R3hCl6+/yezkVMA==}
+  '@types/express-openapi@1.9.2':
+    resolution: {integrity: sha512-ex3SBHuXpIZXVZXzE1tiRbK/TfrIJsXLMZeE3VFbtDRQTS5tqLzkuoIRv3aENQUmK4pUIQWmXl+HlXwpKt2PlQ==}
     deprecated: This is a stub types definition. express-openapi provides its own type definitions, so you do not need this installed.
 
   '@types/express-serve-static-core@4.19.5':
@@ -12158,7 +12158,7 @@ snapshots:
       case-sensitive-paths-webpack-plugin: 2.4.0
       core-js: 3.38.1
       css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.23.1))
+      file-loader: 6.2.0(webpack@4.47.0)
       find-up: 5.0.0
       fork-ts-checker-webpack-plugin: 4.1.6(eslint@9.13.0)(typescript@5.6.3)(webpack@4.47.0)
       glob: 7.2.3
@@ -12534,7 +12534,7 @@ snapshots:
       core-js: 3.38.1
       css-loader: 3.6.0(webpack@4.47.0)
       express: 4.21.1
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.23.1))
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
@@ -12892,7 +12892,7 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
-  '@types/express-openapi@1.9.0':
+  '@types/express-openapi@1.9.2':
     dependencies:
       express-openapi: 12.1.3
 
