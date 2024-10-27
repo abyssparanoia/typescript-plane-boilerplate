@@ -229,8 +229,8 @@ importers:
         specifier: 3.11.3
         version: 3.11.3
       uuid:
-        specifier: 10.0.0
-        version: 10.0.0
+        specifier: 11.0.0
+        version: 11.0.0
       winston:
         specifier: 3.15.0
         version: 3.15.0
@@ -9169,6 +9169,10 @@ packages:
 
   uuid@10.0.0:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    hasBin: true
+
+  uuid@11.0.0:
+    resolution: {integrity: sha512-iE8Fa5fgBY4rN5GvNUJ8TSwO1QG7TzdPfhrJczf6XJ6mZUxh/GX433N70fCiJL9h8EKP5ayEIo0Q6EBQGWHFqA==}
     hasBin: true
 
   uuid@3.4.0:
@@ -20632,6 +20636,8 @@ snapshots:
   uuid-browser@3.1.0: {}
 
   uuid@10.0.0: {}
+
+  uuid@11.0.0: {}
 
   uuid@3.4.0: {}
 
