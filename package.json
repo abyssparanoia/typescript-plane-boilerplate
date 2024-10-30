@@ -19,7 +19,7 @@
     "@eslint/js": "9.13.0",
     "@types/eslint": "9.6.1",
     "@types/jest": "29.5.14",
-    "@types/node": "20.17.3",
+    "@types/node": "22.8.4",
     "@types/supertest": "6.0.2",
     "@typescript-eslint/eslint-plugin": "8.12.2",
     "@typescript-eslint/parser": "8.12.2",
@@ -67,7 +67,7 @@
   },
   "packageManager": "pnpm@9.12.3",
   "engines": {
-    "node": "20",
+    "node": "22",
     "npm": "use pnpm please!",
     "yarn": "use pnpm please!",
     "pnpm": ">=9.6.0"
