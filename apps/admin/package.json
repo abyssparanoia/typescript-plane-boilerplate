@@ -14,7 +14,7 @@
     "@typescript-plane-boilerplate/firebase-client": "workspace:*",
     "@quentin-sommer/react-useragent": "3.2.0",
     "axios": "1.7.7",
-    "core-js": "3.38.1",
+    "core-js": "3.39.0",
     "date-fns": "4.1.0",
     "express": "4.21.1",
     "@faker-js/faker": "9.1.0",
