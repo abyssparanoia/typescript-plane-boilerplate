@@ -111,8 +111,8 @@ importers:
   apps/admin:
     dependencies:
       '@faker-js/faker':
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.2.0
+        version: 9.2.0
       '@quentin-sommer/react-useragent':
         specifier: 3.2.0
         version: 3.2.0(react@18.3.1)
@@ -1644,8 +1644,8 @@ packages:
     resolution: {integrity: sha512-vH9PiIMMwvhCx31Af3HiGzsVNULDbyVkHXwlemn/B0TFj/00ho3y55efXrUZTfQipxoHC5u4xq6zblww1zm1Ig==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@faker-js/faker@9.1.0':
-    resolution: {integrity: sha512-GJvX9iM9PBtKScJVlXQ0tWpihK3i0pha/XAhzQa1hPK/ILLa1Wq3I63Ij7lRtqTwmdTxRCyrUhLC5Sly9SLbug==}
+  '@faker-js/faker@9.2.0':
+    resolution: {integrity: sha512-ulqQu4KMr1/sTFIYvqSdegHT8NIkt66tFAkugGnHA+1WAfEn6hMzNR+svjXGFRVLnapxvej67Z/LwchFrnLBUg==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
   '@fastify/busboy@3.0.0':
@@ -10919,7 +10919,7 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@faker-js/faker@9.1.0': {}
+  '@faker-js/faker@9.2.0': {}
 
   '@fastify/busboy@3.0.0': {}
 
@@ -12253,7 +12253,7 @@ snapshots:
       case-sensitive-paths-webpack-plugin: 2.4.0
       core-js: 3.39.0
       css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.24.0))
       find-up: 5.0.0
       fork-ts-checker-webpack-plugin: 4.1.6(eslint@9.14.0)(typescript@5.6.3)(webpack@4.47.0)
       glob: 7.2.3
@@ -12629,7 +12629,7 @@ snapshots:
       core-js: 3.39.0
       css-loader: 3.6.0(webpack@4.47.0)
       express: 4.21.1
-      file-loader: 6.2.0(webpack@5.94.0(esbuild@0.24.0))
+      file-loader: 6.2.0(webpack@4.47.0)
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
