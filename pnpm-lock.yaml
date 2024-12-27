@@ -36,8 +36,8 @@ importers:
         specifier: workspace:*
         version: link:packages/tsconfig
       concurrently:
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       eslint:
         specifier: 9.17.0
         version: 9.17.0
@@ -4176,8 +4176,8 @@ packages:
     engines: {node: '>=10.0.0'}
     hasBin: true
 
-  concurrently@9.1.0:
-    resolution: {integrity: sha512-VxkzwMAn4LP7WyMnJNbHN5mKV9L2IbyDjpzemKr99sXNR3GqRNMMHdm7prV1ws9wg7ETj6WUkNOigZVsptwbgg==}
+  concurrently@9.1.1:
+    resolution: {integrity: sha512-6VX8lrBIycgZKTwBsWS+bLrmkGRkDmvtGsYylRN9b93CygN6CbK46HmnQ3rdSOR8HRjdahDrxb5MqD9cEFOg5Q==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -14814,7 +14814,7 @@ snapshots:
       tree-kill: 1.2.2
       yargs: 16.2.0
 
-  concurrently@9.1.0:
+  concurrently@9.1.1:
     dependencies:
       chalk: 4.1.2
       lodash: 4.17.21
