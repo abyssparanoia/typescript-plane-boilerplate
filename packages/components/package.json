@@ -37,8 +37,8 @@
     "@storybook/react": "6.5.16",
     "@storybook/testing-library": "0.2.2",
     "@types/node": "22.10.2",
-    "@types/react": "18.3.14",
-    "@types/react-dom": "18.3.2",
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
     "@types/styled-components": "5.1.34",
     "babel-loader": "9.2.1",
     "babel-plugin-styled-components": "2.1.4"
