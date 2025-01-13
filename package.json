@@ -46,7 +46,7 @@
     "turbo": "2.3.3",
     "typescript": "5.7.2",
     "typescript-eslint": "8.19.1",
-    "wait-on": "8.0.1",
+    "wait-on": "8.0.2",
     "tsup": "8.3.5"
   },
   "private": true,
