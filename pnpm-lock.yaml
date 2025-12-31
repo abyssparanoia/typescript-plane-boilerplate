@@ -46,7 +46,7 @@ importers:
         version: 10.1.8(eslint@9.18.0)
       eslint-plugin-prettier:
         specifier: 5.5.4
-        version: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.18.0))(eslint@9.18.0)(prettier@3.4.2)
+        version: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.18.0))(eslint@9.18.0)(prettier@3.7.4)
       eslint-plugin-react:
         specifier: 7.37.5
         version: 7.37.5(eslint@9.18.0)
@@ -72,8 +72,8 @@ importers:
         specifier: 7.0.2
         version: 7.0.2
       prettier:
-        specifier: 3.4.2
-        version: 3.4.2
+        specifier: 3.7.4
+        version: 3.7.4
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -7140,6 +7140,7 @@ packages:
   next@14.2.33:
     resolution: {integrity: sha512-GiKHLsD00t4ACm1p00VgrI0rUFAC9cRDGReKyERlM57aeEZkOQGcZTpIbsGn0b562FTPJWmYfKwplfO9EaT6ng==}
     engines: {node: '>=18.17.0'}
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/security-update-2025-12-11 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -7732,8 +7733,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.4.2:
-    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
+  prettier@3.7.4:
+    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -15742,10 +15743,10 @@ snapshots:
     dependencies:
       eslint: 9.18.0
 
-  eslint-plugin-prettier@5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.18.0))(eslint@9.18.0)(prettier@3.4.2):
+  eslint-plugin-prettier@5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.18.0))(eslint@9.18.0)(prettier@3.7.4):
     dependencies:
       eslint: 9.18.0
-      prettier: 3.4.2
+      prettier: 3.7.4
       prettier-linter-helpers: 1.0.0
       synckit: 0.11.8
     optionalDependencies:
@@ -19142,7 +19143,7 @@ snapshots:
 
   prettier@2.3.0: {}
 
-  prettier@3.4.2: {}
+  prettier@3.7.4: {}
 
   pretty-bytes@5.6.0: {}
 
