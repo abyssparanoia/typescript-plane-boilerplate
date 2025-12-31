@@ -178,8 +178,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0
       '@types/faker':
-        specifier: 6.6.9
-        version: 6.6.9
+        specifier: 6.6.11
+        version: 6.6.11
       '@types/node':
         specifier: 22.18.1
         version: 22.18.1
@@ -2980,8 +2980,8 @@ packages:
   '@types/express@5.0.0':
     resolution: {integrity: sha512-DvZriSMehGHL1ZNLzi6MidnsDhUZM/x2pRdDIKdwbUNqqwHxMlRdkxtn6/EPKyqKpHqTl/4nRZsRNLpZxZRpPQ==}
 
-  '@types/faker@6.6.9':
-    resolution: {integrity: sha512-Y9YYm5L//8ooiiknO++4Gr539zzdI0j3aXnOBjo1Vk+kTvffY10GuE2wn78AFPECwZ5MYGTjiDVw1naLLdDimw==}
+  '@types/faker@6.6.11':
+    resolution: {integrity: sha512-/m/YZdfPXeM3dnSBz4JDbbYXelBm+onjsX2+LZV1XPJjIOpdhoc8ngws67iyXdLJwLiigOcejBufaDdjuVWy3Q==}
     deprecated: This is a stub types definition. faker provides its own type definitions, so you do not need this installed.
 
   '@types/glob@7.2.0':
@@ -7140,6 +7140,7 @@ packages:
   next@14.2.33:
     resolution: {integrity: sha512-GiKHLsD00t4ACm1p00VgrI0rUFAC9cRDGReKyERlM57aeEZkOQGcZTpIbsGn0b562FTPJWmYfKwplfO9EaT6ng==}
     engines: {node: '>=18.17.0'}
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/security-update-2025-12-11 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -13267,7 +13268,7 @@ snapshots:
       '@types/qs': 6.9.15
       '@types/serve-static': 1.15.7
 
-  '@types/faker@6.6.9':
+  '@types/faker@6.6.11':
     dependencies:
       faker: 6.6.6
 
