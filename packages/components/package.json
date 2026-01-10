@@ -24,8 +24,8 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "styled-components": "6.1.19"
   },
   "devDependencies": {
@@ -37,8 +37,8 @@
     "@storybook/react": "6.5.16",
     "@storybook/testing-library": "0.2.2",
     "@types/node": "22.18.1",
-    "@types/react": "18.3.27",
-    "@types/react-dom": "18.3.7",
+    "@types/react": "19.2.8",
+    "@types/react-dom": "19.2.3",
     "@types/styled-components": "5.1.36",
     "babel-loader": "9.2.1",
     "babel-plugin-styled-components": "2.1.4"
